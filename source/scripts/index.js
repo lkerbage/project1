@@ -1,24 +1,30 @@
-import { LocalStorage, ErrorMessages } from '../constants/enums.js';
+import { ErrorMessages } from '../constants/enums.js';
+import todoData from '../model/model.js';
 
-const data = JSON.parse(localStorage.getItem('todos')) || [];
+const data = todoData || [];
 const create = document.querySelector('#create');
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
+const todoTitle = document.querySelector('.todo-title');
 const dataLength = data.length;
+
 const displayData = () => {
-  ul.innerHTML = data
-    .map(
-      (todo, index) => `<li class="container wrapper" data-id="${index}">${todo.title} und ${todo.description}<button class="deleteButton" data-id="${index}">Löschen</button><button class="editButton"  data-id="${index}">Bearbeiten</button></li>`,
-    )
+  console.log(data);
+  ul.innerHTML = data.map(
+    (todo, index) => `<li class="container wrapper" data-id="${index}">${todo.title} und ${todo.description}<button class="deleteButton" data-id="${index}">Löschen</button><button class="editButton"  data-id="${index}">Bearbeiten</button></li>`,
+  )
     .join('');
 };
+
 window.addEventListener('load', () => {
   const deleteButtons = document.querySelectorAll('.deleteButton');
   const editButton = document.querySelectorAll('.editButton');
 
   const deleteItem = (id) => {
     const updatedData = data.filter((item) => data.indexOf(item) !== Number(id));
-    localStorage.setItem(LocalStorage.TODOS, JSON.stringify(updatedData));
+    // todo appendChild
+    console.log(updatedData);
+
     displayData();
   };
 
@@ -43,14 +49,14 @@ const { dueDate } = form.elements;
 const { finished } = form.elements;
 const { description } = form.elements;
 
-const getNumberOfTodos = () => {
-  // completed / incompleted
+const getNumberOfTodos = (_dataLength) => {
+  todoTitle.innerHTML = `<h2> ${_dataLength === 1 ? `${_dataLength} Todo` : `${_dataLength}  Todos`}</h2>`;
 };
 
 function init() {
   if (dataLength > 0) {
     displayData();
-    getNumberOfTodos();
+    getNumberOfTodos(dataLength);
   } else ul.innerHTML = '<h2>Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
 }
 
@@ -64,7 +70,7 @@ const submitTodo = () => {
     timestamp: Date.now(),
   };
   data.push(newTodo);
-  localStorage.setItem('todos', JSON.stringify(data));
+  // todo add todo
 };
 
 const submitCreate = (ev) => {
