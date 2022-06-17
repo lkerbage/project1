@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Todo App</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/index.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1>Laurents TO-DO Checkliste</h1>
+      <nav>
+        Anzeigen, editieren von Notizen
+        <x>
+          <li>- Sortieren von Notizen</li>
+          <li>- Filtern von „abgeschlossenen" Notizen</li>
+          <li>- Abspeichern der Daten auf dem Server</li>
+          <li>- Wechseln des Styles</li>
+          <li>- s. 136 Vorlesung Marcel wichtig</li>
+          <li>validate ww3 school</li>
+          <li>alles mit delete und edit mit data-xyz machen</li>
+        </x>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container wrapper">
+        <form class="myForm" method="get" id="form">
+          <div>
+            <label
+              >Titel
+              <input type="text" name="title" id="title" required />
+            </label>
+          </div>
+          <div>
+            <label
+              >Dringlichkeit
+              <input
+                type="number"
+                name="importance"
+                id="importance"
+                min="0"
+                max="3"
+                required
+              />
+            </label>
+          </div>
+          <div>
+            <label
+              >Zu erledigen bis
+              <input type="date" name="dueDate" id="dueDate" required />
+            </label>
+          </div>
+          <div>
+            <label class="checkbox">
+              erledigt <input type="checkbox" name="finished" id="finished" />
+            </label>
+          </div>
+
+          <label
+            >Beschreibung
+            <textarea name="description" id="description"></textarea>
+          </label>
+
+          <div><button type="submit" id="create">Erstellen</button></div>
+          <div>
+            <button type="submit" id="createAndOverview">
+              Erstellen & zur Übersicht
+            </button>
+          </div>
+          <div><button type="submit" id="overview">Übersicht</button></div>
+        </form>
+      </div>
+
+      <div class="todo-title"></div>
+      <ul></ul>
+    </main>
+
+    <footer>
+      <p>&copy; Laurent</p>
+    </footer>
+
+    <script src="scripts/index.js" type="module"></script>
+  </body>
+</html>
