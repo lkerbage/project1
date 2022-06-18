@@ -16,13 +16,11 @@
       nomodule=""
       src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"
     ></script>
-
   </head>
   <body>
     <header>
       <h1>Laurents TO-DO Checkliste</h1>
       <nav>
-
         <x>
           <li>Anzeigen, editieren von Notizen</li>
           <li>- Sortieren von Notizen</li>
@@ -31,7 +29,8 @@
           <li>- Wechseln des Styles</li>
           <li>- s. 136 Vorlesung Marcel wichtig</li>
           <li>validate ww3 school</li>
-          <li>clicked create -> update</li><li>grosse js -> viele kleine js files aufteilen</li>
+          <li>clicked create -> update</li>
+          <li>grosse js -> viele kleine js files aufteilen</li>
         </x>
       </nav>
     </header>
@@ -61,14 +60,14 @@
           <div>
             <label
               >Zu erledigen bis
-              <input type="date" name="dueDate" id="dueDate"  />
+              <input type="date" name="dueDate" id="dueDate" />
             </label>
           </div>
-          <div>
+          <span>
             <label class="checkbox">
-              erledigt <input type="checkbox" name="finished" id="finished" />
+              erledigt <input type="checkbox" name="completed" id="completed" />
             </label>
-          </div>
+          </span>
 
           <label
             >Beschreibung
@@ -86,9 +85,19 @@
       </div>
 
       <div class="todo-title"></div>
+      <div class="todo-filter">
+        <select>
+          <option value="" selected>Filtern nach ...</option>
+          <option value="title" >Titel</option>
+          <option value="importance" >Dringlichkeit</option>
+          <option value="dueDate" >Erledigungsdatum</option>
+          <option value="timestamp" >Erstellungsdatum</option>
+        </select>
 
+
+      </div>
       <div class="todo-list">
-      <ul></ul>
+        <ul></ul>
       </div>
     </main>
 
@@ -96,6 +105,5 @@
       <p>&copy; Laurent</p>
     </footer>
     <script src="scripts/index.js" type="module"></script>
-
   </body>
 </html>

@@ -23,12 +23,11 @@ body {
   grid-column-gap: 20px;
   grid-row-gap: 20px;
 }
-.box{
-  background-color:white;
-  padding:20px;
-  display:flex;
-  justify-content:center;
-
+.box {
+  background-color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 h3,
@@ -47,24 +46,24 @@ textarea:focus {
 
 input,
 textarea,
-div>button {
+div > button {
   width: 100%;
+  display: block;
 }
 
-li>button {
-  width:50%;
+li > button {
+  width: 50%;
 }
 
 .wrapper {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   display: grid;
-  gap:1rem 1rem;
-
+  gap: 1rem 1rem;
 }
 .wrapper > * {
   padding: 1em;
   display: grid;
-  gap:1rem 1rem;
+  gap: 1rem 1rem;
 }
 @media (min-width: 700px) {
   .wrapper {
@@ -88,11 +87,9 @@ ul {
   background: #fff;
 }
 
-
 input label {
   display: block;
 }
-
 
 .full-width {
   grid-column: 1 / 3;
@@ -104,10 +101,11 @@ textarea {
   padding: 1em;
 }
 
-.checkbox {
-  display: grid;
+input > checkbox {
+  display: block;
   justify-items: left;
-  width:50%;
+  width: 50%;
+  border: 1px dashed red;
 }
 
 button {
@@ -115,21 +113,24 @@ button {
   width: 100%;
   border: 0;
 }
-button:hover, button:focus {
+button:hover,
+button:focus {
   background: gold;
   outline: 0;
 }
 
-.completedButton:hover, .completedButton:focus {
+.completedButton:hover,
+.completedButton:focus {
   background: orange;
 }
 
-.editButton:hover, .editButton:focus {
+.editButton:hover,
+.editButton:focus {
   background: lawngreen;
 }
 
 .alignCenter {
-  text-align:center;
+  text-align: center;
 }
 
 .displayInline {

@@ -7,6 +7,7 @@ const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
 const todoTitle = document.querySelector('.todo-title');
 const todoList = document.querySelector('.todo-list');
+const todoFilter = document.querySelector('.todo-filter');
 
 const dataLength = data.length;
 
@@ -19,34 +20,50 @@ const showImportance = (importance) => {
 };
 
 const displayData = () => {
-  ul.innerHTML = data.map(
-    (todo, index) => `<li class="container wrapper alignCenter" data-id="${index}"><strong>${todo.title} ${showImportance(todo.importance)}</strong>   ${todo.description}
+  ul.innerHTML = data
+    .map(
+      (
+        todo,
+        index,
+      ) => `<li class="container wrapper alignCenter" data-id="${index}"><strong>${
+        todo.title
+      } ${showImportance(todo.importance)}</strong>   ${todo.description}
 <div class="itemContainer">
   <div class="box"><button class="completedButton" data-id="${index}">Erledigt</button></div><div class="box"><button class="editButton" data-id="${index}">Bearbeiten</button></div></div></li>`,
-  )
+    )
     .join('');
 };
 
 const processItem = (ev) => {
   const { id } = ev.target.dataset;
   if (ev.target.className === 'completedButton') {
-    const updatedData = data.filter((item) => data.indexOf(item) === Number(id) && console.log(data[id].finished = 'yes'));
+    const updatedData = data.filter(
+      (item) => data.indexOf(item) === Number(id)
+        && console.log((data[id].completed = 'yes')),
+    );
   }
-  if (ev.target.className === 'editButton') { console.log('open item no. ', ev.target.dataset.id); }
-
+  if (ev.target.className === 'editButton') {
+    console.log('open item no. ', ev.target.dataset.id);
+  }
   displayData();
+};
+
+const filterItems = (ev) => {
+  console.log(ev.target);
 };
 
 const { title } = form.elements;
 const { importance } = form.elements;
 const { dueDate } = form.elements;
-const { finished } = form.elements;
+const { completed } = form.elements;
 const { description } = form.elements;
 
 const getNumberOfTodos = (_dataLength) => {
-  const completedTodos = data.filter((todo) => todo.finished === 'on');
+  const completedTodos = data.filter((todo) => todo.completed === 'on');
   const numberOfIncompleted = _dataLength - completedTodos.length;
-  todoTitle.innerHTML = `<h2> ${_dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben`} davon ${numberOfIncompleted} unerledigte Aufgaben</h2>`;
+  todoTitle.innerHTML = `<h2> ${
+    _dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben`
+  } davon ${numberOfIncompleted} unerledigte Aufgaben</h2>`;
 };
 
 function init() {
@@ -61,7 +78,7 @@ const submitTodo = () => {
     title: title.value,
     importance: importance.value,
     dueDate: dueDate.value,
-    finished: finished.value,
+    completed: completed.value,
     description: description.value,
     timestamp: Date.now(),
   };
@@ -76,9 +93,11 @@ const submitCreate = (ev) => {
 const validationText = () => {
   if (title.validity.valueMissing) {
     title.setCustomValidity(ErrorMessages.ERROR_TITLE);
-  } if (importance.validity.rangeUnderflow) {
+  }
+  if (importance.validity.rangeUnderflow) {
     importance.setCustomValidity(ErrorMessages.IMPORTANCE);
-  } if (dueDate.validity.valueMissing) {
+  }
+  if (dueDate.validity.valueMissing) {
     dueDate.setCustomValidity(ErrorMessages.DUE_DATE);
   }
 };
@@ -89,5 +108,6 @@ form.addEventListener('submit', (e) => {
 });
 title.addEventListener('input', validationText);
 todoList.addEventListener('click', (ev) => processItem(ev));
+todoFilter.addEventListener('change', (ev) => filterItems(ev));
 
 init();
