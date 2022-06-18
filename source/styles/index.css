@@ -1,6 +1,10 @@
 * {
   box-sizing: border-box;
 }
+:root {
+  --width50: 50%;
+  --width100: 100%;
+}
 
 body {
   padding: 1rem;
@@ -16,7 +20,6 @@ body {
   margin-top: 1rem;
 }
 
-
 .wrapper {
   box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
   display: grid;
@@ -28,7 +31,7 @@ body {
   gap: 1rem 1rem;
 }
 @media (min-width: 700px) {
-  .wrapper .center{
+  .wrapper .center {
     display: grid;
     grid-template-columns: 1fr;
     justify-content: center;
@@ -39,8 +42,16 @@ body {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 500px 500px;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+}
+
+.filterContainer {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 500px 500px;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
 }
 .box {
   background-color: white;
@@ -64,17 +75,22 @@ textarea:focus {
 }
 
 input[type="text"],
-input[type="date"]
+input[type="number"],
+input[type="date"],
 textarea,
 div > button {
-  width: 100%;
+  width: var(--width100);
   display: block;
 }
 
-li > button,select {
-  width: 50%;
+li > button {
+  width: var(--width50);
 }
 
+select {
+  width: var(--width50);
+  color: grey;
+}
 
 ul {
   list-style: none;
@@ -100,31 +116,26 @@ input label {
 
 button,
 input,
+select,
 textarea {
   padding: 1em;
 }
 
-input[type="text"] {
-width: 100%;
-}
-
-
-
 input > checkbox {
   display: block;
   justify-items: left;
-  width: 50%;
+  width: var(--width50);
   border: 1px dashed red;
 }
 
 button {
   background: lightgrey;
-  width: 100%;
+  width: var(--width100);
   border: 0;
 }
 button:hover,
 button:focus {
-  background: gold;
+  background: royalblue;
   outline: 0;
 }
 
@@ -135,7 +146,7 @@ button:focus {
 
 .editButton:hover,
 .editButton:focus {
-  background: lawngreen;
+  background: royalblue;
 }
 
 .alignCenter {

@@ -19,11 +19,10 @@
   </head>
   <body>
     <header>
-      <h1 class="center">Laurents TO-DO Checkliste</h1>
+      <h1 class="center">Laurents TODO Checkliste</h1>
       <nav>
         <x>
           <li>Anzeigen, editieren von Notizen</li>
-          <li>- Sortieren von Notizen</li>
           <li>- Filtern von „abgeschlossenen" Notizen</li>
           <li>- Abspeichern der Daten auf dem Server</li>
           <li>- Wechseln des Styles</li>
@@ -63,11 +62,12 @@
               <input type="date" name="dueDate" id="dueDate" />
             </label>
           </div>
-          <span>
+          <div>
             <label class="checkbox">
-              erledigt <input type="checkbox" name="completed" id="completed" />
+              <input type="hidden" name="completed" value="0">
+              erledigt <input type="checkbox" name="completed" id="completed" value="1"/>
             </label>
-          </span>
+          </div>
 
           <label
             >Beschreibung
@@ -85,16 +85,23 @@
       </div>
 
       <div class="todo-title center"></div>
-      <div class="todo-filter center">
-        <select>
-          <option value="" selected>Filtern nach ...</option>
-          <option value="title" >Titel</option>
-          <option value="importance" >Dringlichkeit</option>
-          <option value="dueDate" >Erledigungsdatum</option>
-          <option value="timestamp" >Erstellungsdatum</option>
-        </select>
-
-
+      <div class="todo-filter filterContainer">
+        <div class="box">
+          <select class="filter">
+            <option value="" selected>Filtern nach ...</option>
+            <option value="title">Titel</option>
+            <option value="importance">Dringlichkeit</option>
+            <option value="dueDate">Erledigungsdatum</option>
+            <option value="timestamp">Erstellungsdatum</option>
+          </select>
+        </div>
+        <div class="box">
+          <select class="isComplete">
+            <option value="" selected>Alle Todos anzeigen</option>
+            <option value=0>offene Todos anzeigen</option>
+            <option value=1>erledigte Todos anzeigen</option>
+          </select>
+        </div>
       </div>
       <div class="todo-list">
         <ul></ul>

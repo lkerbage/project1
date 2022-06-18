@@ -1,13 +1,14 @@
 import { ErrorMessages } from '../constants/enums.js';
 import todoData from '../model/model.js';
 
-const data = todoData || [];
+const data = todoData;
 const create = document.querySelector('#create');
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
 const todoTitle = document.querySelector('.todo-title');
 const todoList = document.querySelector('.todo-list');
-const todoFilter = document.querySelector('.todo-filter');
+const todoFilter = document.querySelector('.filter');
+const isComplete = document.querySelector('.isComplete');
 
 const dataLength = data.length;
 
@@ -19,8 +20,8 @@ const showImportance = (importance) => {
   return `<span className="displayInline">${flashes.join('')}</span>`;
 };
 
-const displayData = () => {
-  ul.innerHTML = data
+const displayData = (currentData = data) => {
+  ul.innerHTML = currentData
     .map(
       (
         todo,
@@ -45,11 +46,28 @@ const processItem = (ev) => {
   if (ev.target.className === 'editButton') {
     console.log('open item no. ', ev.target.dataset.id);
   }
-  displayData();
 };
 
 const filterItems = (ev) => {
-  console.log(ev.target.value);
+  const filterCriteria = ev.target.value;
+
+  const filterData = data.sort((a, b) => {
+    if (a[filterCriteria] < b[filterCriteria]) {
+      return -1;
+    }
+    if (a[filterCriteria] > b[filterCriteria]) {
+      return 1;
+    }
+    return 0;
+  });
+  displayData(filterData);
+};
+
+const completedItems = (ev) => {
+  const filterCriteria = ev.target.value;
+  console.log(filterCriteria);
+  const filterData = data.filter((todo) => todo.completed === Number(filterCriteria));
+  displayData(filterData);
 };
 
 const { title } = form.elements;
@@ -58,32 +76,37 @@ const { dueDate } = form.elements;
 const { completed } = form.elements;
 const { description } = form.elements;
 
-const getNumberOfTodos = (_dataLength) => {
-  const completedTodos = data.filter((todo) => todo.completed === 'on');
+const displayOpenAndCompletedTodos = (_dataLength) => {
+  const completedTodos = data.filter((todo) => todo.completed === 1);
   const numberOfIncompleted = _dataLength - completedTodos.length;
   todoTitle.innerHTML = `<h2> ${
-    _dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben`
+    _dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben,`
   } davon ${numberOfIncompleted} unerledigte Aufgaben</h2>`;
 };
 
 function init() {
   if (dataLength > 0) {
     displayData();
-    getNumberOfTodos(dataLength);
+    displayOpenAndCompletedTodos(dataLength);
   } else ul.innerHTML = '<h2>Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
 }
 
 const submitTodo = () => {
+  const strDate = dueDate.value.replace(/\./g, '/');
+  const toTimestamp = function () { Date.parse(strDate); };
+  alert(toTimestamp());
+
   const newTodo = {
     title: title.value,
     importance: importance.value,
-    dueDate: dueDate.value,
+    dueDate: toTimestamp(strDate),
     completed: completed.value,
     description: description.value,
     timestamp: Date.now(),
   };
   data.push(newTodo);
-  // todo add todo
+  console.log(newTodo, data);
+  // todo POSTd todo
 };
 
 const submitCreate = (ev) => {
@@ -102,12 +125,12 @@ const validationText = () => {
   }
 };
 
-create.addEventListener('click', () => {});
-form.addEventListener('submit', (e) => {
-  submitCreate(e);
+form.addEventListener('submit', (ev) => {
+  submitCreate(ev);
 });
 title.addEventListener('input', validationText);
 todoList.addEventListener('click', (ev) => processItem(ev));
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
+isComplete.addEventListener('change', (ev) => completedItems(ev));
 
 init();
