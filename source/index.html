@@ -24,6 +24,7 @@
         <x>
           <li>Anzeigen, editieren von Notizen</li>
           <li>- Filtern von „abgeschlossenen" Notizen</li>
+          <li>checkbox value on create</li>
           <li>- Abspeichern der Daten auf dem Server</li>
           <li>- Wechseln des Styles</li>
           <li>- s. 136 Vorlesung Marcel wichtig</li>
@@ -64,11 +65,10 @@
           </div>
           <div>
             <label class="checkbox">
-              <input type="hidden" name="completed" value="0">
-              erledigt <input type="checkbox" name="completed" id="completed" value="1"/>
+              erledigt
+              <input class="toggle" type="checkbox" />
             </label>
           </div>
-
           <label
             >Beschreibung
             <textarea name="description" id="description"></textarea>

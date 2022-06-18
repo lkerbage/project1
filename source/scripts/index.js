@@ -30,18 +30,21 @@ const displayData = (currentData = data) => {
         todo.title
       } ${showImportance(todo.importance)}</strong>   ${todo.description}
 <div class="itemContainer">
-  <div class="box"><button class="completedButton" data-id="${index}">Erledigt</button></div><div class="box"><button class="editButton" data-id="${index}">Bearbeiten</button></div></div></li>`,
+  <div class="box">Erledigt<input class="toggle isCompleted" type="checkbox" ${todo.completed ? 'checked' : ''}/></div>
+  <div class="box"><button class="editButton" data-id="${index}">Bearbeiten </button></div></div></li>`,
     )
     .join('');
 };
 
 const processItem = (ev) => {
   const { id } = ev.target.dataset;
-  if (ev.target.className === 'completedButton') {
-    const updatedData = data.filter(
+  console.log(id);
+  if (ev.target.className === 'isCompleted') {
+    const updatedData = data.forEach(
       (item) => data.indexOf(item) === Number(id)
-        && console.log((data[id].completed = 'yes')),
+        && (data[id].completed = 1),
     );
+    displayData(updatedData);
   }
   if (ev.target.className === 'editButton') {
     console.log('open item no. ', ev.target.dataset.id);
@@ -81,7 +84,7 @@ const displayOpenAndCompletedTodos = (_dataLength) => {
   const numberOfIncompleted = _dataLength - completedTodos.length;
   todoTitle.innerHTML = `<h2> ${
     _dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben,`
-  } davon ${numberOfIncompleted} unerledigte Aufgaben</h2>`;
+  } davon ${numberOfIncompleted} offene Aufgaben</h2>`;
 };
 
 function init() {
@@ -93,8 +96,7 @@ function init() {
 
 const submitTodo = () => {
   const strDate = dueDate.value.replace(/\./g, '/');
-  const toTimestamp = function () { Date.parse(strDate); };
-  alert(toTimestamp());
+  const toTimestamp = () => Date.parse(strDate);
 
   const newTodo = {
     title: title.value,
@@ -105,7 +107,7 @@ const submitTodo = () => {
     timestamp: Date.now(),
   };
   data.push(newTodo);
-  console.log(newTodo, data);
+  alert(JSON.stringify(newTodo));
   // todo POSTd todo
 };
 
