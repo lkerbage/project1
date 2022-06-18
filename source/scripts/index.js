@@ -8,7 +8,7 @@ const ul = document.querySelector('ul');
 const todoTitle = document.querySelector('.todo-title');
 const todoList = document.querySelector('.todo-list');
 const todoFilter = document.querySelector('.filter');
-const isComplete = document.querySelector('.isComplete');
+const showByStatus = document.querySelector('.show-by-status');
 
 const dataLength = data.length;
 
@@ -30,7 +30,7 @@ const displayData = (currentData = data) => {
         todo.title
       } ${showImportance(todo.importance)}</strong>   ${todo.description}
 <div class="itemContainer">
-  <div class="box">Erledigt<input class="toggle isCompleted" type="checkbox" ${todo.completed ? 'checked' : ''}/></div>
+  <div class="box">Erledigt<input data-id="${index}" class="toggle" data-status="status" type="checkbox" ${todo.completed ? 'checked' : ''}/></div>
   <div class="box"><button class="editButton" data-id="${index}">Bearbeiten </button></div></div></li>`,
     )
     .join('');
@@ -38,9 +38,10 @@ const displayData = (currentData = data) => {
 
 const processItem = (ev) => {
   const { id } = ev.target.dataset;
-  console.log(id);
-  if (ev.target.className === 'isCompleted') {
-    const updatedData = data.forEach(
+  const { status } = ev.target.dataset;
+  if (ev.target.className === 'showByStatus') {
+    console.log(id);
+    const updatedData = data.map(
       (item) => data.indexOf(item) === Number(id)
         && (data[id].completed = 1),
     );
@@ -48,6 +49,9 @@ const processItem = (ev) => {
   }
   if (ev.target.className === 'editButton') {
     console.log('open item no. ', ev.target.dataset.id);
+  }
+  if (status) {
+    console.log('status item no. ', ev.target.dataset.id, status);
   }
 };
 
@@ -68,8 +72,7 @@ const filterItems = (ev) => {
 
 const completedItems = (ev) => {
   const filterCriteria = ev.target.value;
-  console.log(filterCriteria);
-  const filterData = data.filter((todo) => todo.completed === Number(filterCriteria));
+  const filterData = data.filter((todo) => ((filterCriteria !== 'a') ? todo.completed === Number(filterCriteria) : todo));
   displayData(filterData);
 };
 
@@ -131,8 +134,10 @@ form.addEventListener('submit', (ev) => {
   submitCreate(ev);
 });
 title.addEventListener('input', validationText);
-todoList.addEventListener('click', (ev) => processItem(ev));
+todoList.addEventListener('click', (ev) => {
+  processItem(ev);
+});
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
-isComplete.addEventListener('change', (ev) => completedItems(ev));
+showByStatus.addEventListener('change', (ev) => completedItems(ev));
 
 init();

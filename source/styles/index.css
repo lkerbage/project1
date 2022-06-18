@@ -187,7 +187,7 @@ button:focus {
 }
 
 .toggle:before {
-  content: "on off";
+  content: "ja nein";
   display: block;
   position: absolute;
   z-index: 2;
