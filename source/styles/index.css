@@ -16,6 +16,25 @@ body {
   margin-top: 1rem;
 }
 
+
+.wrapper {
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
+  display: grid;
+  gap: 1rem 1rem;
+}
+.wrapper > * {
+  padding: 1em;
+  display: grid;
+  gap: 1rem 1rem;
+}
+@media (min-width: 700px) {
+  .wrapper .center{
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+}
+
 .itemContainer {
   margin: 0 auto;
   display: grid;
@@ -44,34 +63,18 @@ textarea:focus {
   outline: 3px solid gold;
 }
 
-input,
+input[type="text"],
+input[type="date"]
 textarea,
 div > button {
   width: 100%;
   display: block;
 }
 
-li > button {
+li > button,select {
   width: 50%;
 }
 
-.wrapper {
-  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
-  display: grid;
-  gap: 1rem 1rem;
-}
-.wrapper > * {
-  padding: 1em;
-  display: grid;
-  gap: 1rem 1rem;
-}
-@media (min-width: 700px) {
-  .wrapper {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-content: center;
-  }
-}
 
 ul {
   list-style: none;
@@ -100,6 +103,12 @@ input,
 textarea {
   padding: 1em;
 }
+
+input[type="text"] {
+width: 100%;
+}
+
+
 
 input > checkbox {
   display: block;
@@ -135,4 +144,16 @@ button:focus {
 
 .displayInline {
   display: inline;
+}
+
+.center {
+  display: grid;
+  gap: 1rem 1rem;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  margin-top: 1rem;
 }

@@ -49,7 +49,7 @@ const processItem = (ev) => {
 };
 
 const filterItems = (ev) => {
-  console.log(ev.target);
+  console.log(ev.target.value);
 };
 
 const { title } = form.elements;
