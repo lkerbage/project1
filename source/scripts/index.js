@@ -6,42 +6,36 @@ const create = document.querySelector('#create');
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
 const todoTitle = document.querySelector('.todo-title');
+const todoList = document.querySelector('.todo-list');
+
 const dataLength = data.length;
 
+const showImportance = (importance) => {
+  const flashes = [];
+  for (let i = 0; i < importance; i++) {
+    flashes.push("<ion-icon name='flash'></ion-icon>");
+  }
+  return `<span className="displayInline">${flashes.join('')}</span>`;
+};
+
 const displayData = () => {
-  console.log(data);
   ul.innerHTML = data.map(
-    (todo, index) => `<li class="container wrapper" data-id="${index}">${todo.title} und ${todo.description}<button class="deleteButton" data-id="${index}">Löschen</button><button class="editButton"  data-id="${index}">Bearbeiten</button></li>`,
+    (todo, index) => `<li class="container wrapper alignCenter" data-id="${index}"><strong>${todo.title} ${showImportance(todo.importance)}</strong>   ${todo.description}
+<div class="itemContainer">
+  <div class="box"><button class="completedButton" data-id="${index}">Erledigt</button></div><div class="box"><button class="editButton" data-id="${index}">Bearbeiten</button></div></div></li>`,
   )
     .join('');
 };
 
-window.addEventListener('load', () => {
-  const deleteButtons = document.querySelectorAll('.deleteButton');
-  const editButton = document.querySelectorAll('.editButton');
+const processItem = (ev) => {
+  const { id } = ev.target.dataset;
+  if (ev.target.className === 'completedButton') {
+    const updatedData = data.filter((item) => data.indexOf(item) === Number(id) && console.log(data[id].finished = 'yes'));
+  }
+  if (ev.target.className === 'editButton') { console.log('open item no. ', ev.target.dataset.id); }
 
-  const deleteItem = (id) => {
-    const updatedData = data.filter((item) => data.indexOf(item) !== Number(id));
-    // todo appendChild
-    console.log(updatedData);
-
-    displayData();
-  };
-
-  deleteButtons.forEach((button) => {
-    button.addEventListener('click', (ev) => {
-      const { id } = ev.target.dataset;
-      deleteItem(id);
-    });
-  });
-
-  editButton.forEach((button) => {
-    button.addEventListener('click', (ev) => {
-      const { id } = ev.target.dataset;
-      console.log(id);
-    });
-  });
-});
+  displayData();
+};
 
 const { title } = form.elements;
 const { importance } = form.elements;
@@ -50,7 +44,9 @@ const { finished } = form.elements;
 const { description } = form.elements;
 
 const getNumberOfTodos = (_dataLength) => {
-  todoTitle.innerHTML = `<h2> ${_dataLength === 1 ? `${_dataLength} Todo` : `${_dataLength}  Todos`}</h2>`;
+  const completedTodos = data.filter((todo) => todo.finished === 'on');
+  const numberOfIncompleted = _dataLength - completedTodos.length;
+  todoTitle.innerHTML = `<h2> ${_dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben`} davon ${numberOfIncompleted} unerledigte Aufgaben</h2>`;
 };
 
 function init() {
@@ -87,9 +83,11 @@ const validationText = () => {
   }
 };
 
-create.addEventListener('click', () => console.log('clicked create button'));
+create.addEventListener('click', () => {});
 form.addEventListener('submit', (e) => {
   submitCreate(e);
 });
 title.addEventListener('input', validationText);
+todoList.addEventListener('click', (ev) => processItem(ev));
+
 init();
