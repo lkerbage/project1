@@ -23,13 +23,11 @@
       <nav>
         <x>
           <li>grosse js -> diverse kleine js files aufteilen</li>
-          <li>Anzeigen, editieren von Notizen</li>
-          <li>checkbox value on create</li>
           <li>- Abspeichern der Daten auf dem Server</li>
-          <li>- Wechseln des Styles</li>
           <li>Erstelle neues Todo</li>
           <li>validate ww3 school</li>
           <li>clicked create -> update</li>
+          <li>Theme switcher</li>
 
         </x>
       </nav>
@@ -66,7 +64,7 @@
           <div>
             <label class="checkbox">
               erledigt
-              <input class="toggle" type="checkbox" id="completed" name="completed"/>
+              <input class="toggle" type="checkbox" id="completed" name="completed" value="0"/>
             </label>
           </div>
           <label
@@ -87,6 +85,9 @@
 
       <div class="todo-list display-bottom">
       <div class="todo-title alignCenter"></div>
+        <span class="box">
+          <button class="create-new-item" id="openCreate"><ion-icon name="add-circle-outline" size="large"></ion-icon> Neues Todo erstellen</button>
+        </span>
       <div class="todo-filter">
         <div class="box">
           <select class="filter">

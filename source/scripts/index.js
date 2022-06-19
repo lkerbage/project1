@@ -11,8 +11,11 @@ const todoFilter = document.querySelector('.filter');
 const showByStatus = document.querySelector('.show-by-status');
 const displayTop = document.querySelector('.display-top');
 const displayBottom = document.querySelector('.display-bottom');
+const createNew = document.querySelector('.create-new-item');
 
 const dataLength = data.length;
+const hideBottom = () => displayBottom.style.display = 'none';
+const hideTop = () => displayTop.style.display = 'none';
 
 const showImportance = (importance) => {
   const flashes = [];
@@ -51,7 +54,7 @@ const displayData = (currentData = data) => {
 };
 
 const updateItem = (id) => {
-  displayBottom.style.display = 'none';
+  hideBottom();
   const updateData = data[id];
   const formIds = Object.keys(updateData);
   formIds.forEach((name) => {
@@ -108,7 +111,7 @@ const { completed } = form.elements;
 const { description } = form.elements;
 
 const displayOpenAndCompletedTodos = (_dataLength) => {
-  const completedTodos = data.filter((todo) => todo.completed === 1);
+  const completedTodos = data.filter((todo) => todo.completed == 1);
   const numberOfIncompleted = _dataLength - completedTodos.length;
   todoTitle.innerHTML = `<h2> ${
     _dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben,`
@@ -119,7 +122,24 @@ function init() {
   if (dataLength > 0) {
     displayData();
     displayOpenAndCompletedTodos(dataLength);
-  } else ul.innerHTML = '<h2>Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
+    const getDateDifferenceInDays = () => {
+      const d = new Date(1549312452);
+      let month = `${d.getMonth() + 1}`;
+      let day = `${d.getDate()}`;
+      const year = d.getFullYear();
+
+      if (month.length < 2) month = `0${month}`;
+      if (day.length < 2) day = `0${day}`;
+      const date1 = [year, month, day].join('-');
+      const date2 = '2022-09-29';
+      const diffTime = Math.abs(date2 - date1);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      console.log(`${diffDays} ${date1} ${date2} days`);
+
+      return [year, month, day].join('-');
+    };
+    getDateDifferenceInDays();
+  } else { ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>'; }
 }
 
 const submitTodo = () => {
@@ -132,6 +152,7 @@ const submitTodo = () => {
     timestamp: Date.now(),
   };
   data.push(newTodo);
+
   alert(JSON.stringify(newTodo));
   // todo POST todo
 };
@@ -161,5 +182,6 @@ todoList.addEventListener('click', (ev) => {
 });
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
 showByStatus.addEventListener('change', (ev) => completedItems(ev));
+createNew.addEventListener('click', () => hideBottom());
 
 init();

@@ -13,7 +13,7 @@ body {
 }
 
 .container {
-  max-width: 1170px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -79,6 +79,11 @@ body {
   grid-row-gap: 2px;
 }
 
+.todo-filter {
+  display: grid;
+  grid-template-columns: 600px 600px;
+}
+
 h3,
 ul {
   margin: 0;
@@ -102,7 +107,7 @@ div > button {
   display: block;
 }
 
-li > button {
+li > button, span>button {
   width: var(--width50);
 }
 
@@ -180,7 +185,7 @@ button:focus {
   gap: 1rem 1rem;
   grid-template-columns: 1fr;
   justify-content: center;
-  max-width: 1170px;
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding: 1em;
@@ -201,7 +206,7 @@ button:focus {
   border: none;
   cursor: pointer;
   background-color: #707070;
-  transition: background-color ease 0.3s;
+  transition: background-color ease 0.1s;
 }
 
 .toggle:before {
