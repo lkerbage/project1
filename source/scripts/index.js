@@ -20,18 +20,31 @@ const showImportance = (importance) => {
   return `<span className="displayInline">${flashes.join('')}</span>`;
 };
 
+const getDaysDueDate = (dateNow, dueDate) => Math.round((dateNow / 1000 - dueDate) / 3600 / 24);
+
 const displayData = (currentData = data) => {
+  const dateNow = Date.now();
   ul.innerHTML = currentData
     .map(
       (
         todo,
         index,
-      ) => `<li class="container wrapper alignCenter" data-id="${index}"><strong>${
-        todo.title
-      } ${showImportance(todo.importance)}</strong>   ${todo.description}
-<div class="itemContainer">
-  <div class="box">Erledigt<input data-id="${index}" class="toggle" data-status="status" type="checkbox" ${todo.completed ? 'checked' : ''}/></div>
-  <div class="box"><button class="editButton" data-id="${index}">Bearbeiten </button></div></div></li>`,
+      ) => `<li class="container wrapper alignCenter" data-id="${index}">
+<div class="itemContainerTop">
+          <div className="box"><button class="editButton" data-id="${index}">Bearbeiten</button></div> 
+          <div className="box"><strong>${todo.title}</strong></div> 
+          <div className="box"><input data-id="${index}" class="toggle" data-status="status" type="checkbox" ${
+  todo.completed ? 'checked' : ''
+}/></div> 
+       </div>   
+<div class="itemContainerBottom">
+  <div class="box ">In ${getDaysDueDate(dateNow, todo.dueDate)} Tagen</div>
+  <div class="box ">${todo.description}</div>
+  <div class="box ">${showImportance(todo.importance)}</div>
+  
+  </div>
+  
+  </li>`,
     )
     .join('');
 };
@@ -42,8 +55,7 @@ const processItem = (ev) => {
   if (ev.target.className === 'showByStatus') {
     console.log(id);
     const updatedData = data.map(
-      (item) => data.indexOf(item) === Number(id)
-        && (data[id].completed = 1),
+      (item) => data.indexOf(item) === Number(id) && (data[id].completed = 1),
     );
     displayData(updatedData);
   }
@@ -67,12 +79,14 @@ const filterItems = (ev) => {
     }
     return 0;
   });
-  displayData(filterData);
+  displayData(
+    filterCriteria === 'importance' ? filterData.reverse() : filterData,
+  );
 };
 
 const completedItems = (ev) => {
   const filterCriteria = ev.target.value;
-  const filterData = data.filter((todo) => ((filterCriteria !== 'a') ? todo.completed === Number(filterCriteria) : todo));
+  const filterData = data.filter((todo) => (filterCriteria !== 'a' ? todo.completed === Number(filterCriteria) : todo));
   displayData(filterData);
 };
 
@@ -111,7 +125,7 @@ const submitTodo = () => {
   };
   data.push(newTodo);
   alert(JSON.stringify(newTodo));
-  // todo POSTd todo
+  // todo POST todo
 };
 
 const submitCreate = (ev) => {
