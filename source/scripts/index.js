@@ -9,6 +9,8 @@ const todoTitle = document.querySelector('.todo-title');
 const todoList = document.querySelector('.todo-list');
 const todoFilter = document.querySelector('.filter');
 const showByStatus = document.querySelector('.show-by-status');
+const displayTop = document.querySelector('.display-top');
+const displayBottom = document.querySelector('.display-bottom');
 
 const dataLength = data.length;
 
@@ -41,26 +43,35 @@ const displayData = (currentData = data) => {
   <div class="box ">In ${getDaysDueDate(dateNow, todo.dueDate)} Tagen</div>
   <div class="box ">${todo.description}</div>
   <div class="box ">${showImportance(todo.importance)}</div>
-  
-  </div>
+    </div>
   
   </li>`,
     )
     .join('');
 };
 
+const updateItem = (id) => {
+  displayBottom.style.display = 'none';
+  const updateData = data[id];
+  const formIds = Object.keys(updateData);
+  formIds.forEach((name) => {
+    form.elements[name].value = updateData[name];
+    if (name === 'completed' && form.elements[name].value == 1) { form.elements[name].setAttribute('checked', 'checked'); }
+  });
+};
+
 const processItem = (ev) => {
   const { id } = ev.target.dataset;
   const { status } = ev.target.dataset;
   if (ev.target.className === 'showByStatus') {
-    console.log(id);
     const updatedData = data.map(
       (item) => data.indexOf(item) === Number(id) && (data[id].completed = 1),
     );
     displayData(updatedData);
   }
   if (ev.target.className === 'editButton') {
-    console.log('open item no. ', ev.target.dataset.id);
+    const { id } = ev.target.dataset;
+    updateItem(id);
   }
   if (status) {
     console.log('status item no. ', ev.target.dataset.id, status);
@@ -112,13 +123,10 @@ function init() {
 }
 
 const submitTodo = () => {
-  const strDate = dueDate.value.replace(/\./g, '/');
-  const toTimestamp = () => Date.parse(strDate);
-
   const newTodo = {
     title: title.value,
     importance: importance.value,
-    dueDate: toTimestamp(strDate),
+    dueDate: dueDate.value,
     completed: completed.value,
     description: description.value,
     timestamp: Date.now(),

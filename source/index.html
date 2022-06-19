@@ -19,24 +19,24 @@
   </head>
   <body>
     <header>
-      <h1 class="center">Laurents TODO Checkliste</h1>
+      <h1 class="alignCenter">Laurents TODO Checkliste</h1>
       <nav>
         <x>
+          <li>grosse js -> diverse kleine js files aufteilen</li>
           <li>Anzeigen, editieren von Notizen</li>
-          <li>- Filtern von „abgeschlossenen" Notizen</li>
           <li>checkbox value on create</li>
           <li>- Abspeichern der Daten auf dem Server</li>
           <li>- Wechseln des Styles</li>
-          <li>- s. 136 Vorlesung Marcel wichtig</li>
+          <li>Erstelle neues Todo</li>
           <li>validate ww3 school</li>
           <li>clicked create -> update</li>
-          <li>grosse js -> viele kleine js files aufteilen</li>
+
         </x>
       </nav>
     </header>
 
     <main>
-      <div class="container wrapper">
+      <div class="container wrapper display-top">
         <form class="myForm" method="get" id="form">
           <div>
             <label
@@ -66,13 +66,14 @@
           <div>
             <label class="checkbox">
               erledigt
-              <input class="toggle" type="checkbox" />
+              <input class="toggle" type="checkbox" id="completed" name="completed"/>
             </label>
           </div>
           <label
             >Beschreibung
             <textarea name="description" id="description"></textarea>
           </label>
+          <input type="hidden" id="timestamp" name="timestamp"/>
 
           <div><button type="submit" id="create">Erstellen</button></div>
           <div>
@@ -84,6 +85,7 @@
         </form>
       </div>
 
+      <div class="todo-list display-bottom">
       <div class="todo-title alignCenter"></div>
       <div class="todo-filter">
         <div class="box">
@@ -103,7 +105,8 @@
           </select>
         </div>
       </div>
-      <div class="todo-list">
+
+
         <ul></ul>
       </div>
     </main>
