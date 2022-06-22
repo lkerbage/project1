@@ -1,4 +1,4 @@
-const todoData = [
+export const todoData = [
   {
     title: 'a Titel 1',
     importance: '2',

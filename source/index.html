@@ -28,6 +28,7 @@
           <li>validate ww3 school</li>
           <li>clicked create -> update</li>
           <li>Theme switcher</li>
+          <li>.js refactoring</li>
 
         </x>
       </nav>
@@ -58,13 +59,13 @@
           <div>
             <label
               >Zu erledigen bis
-              <input type="date" name="dueDate" id="dueDate" />
+              <input type="date" name="dueDate" id="dueDate" required/>
             </label>
           </div>
           <div>
             <label class="checkbox">
               erledigt
-              <input class="toggle" type="checkbox" id="completed" name="completed" value="0"/>
+              <input  type="checkbox" id="completed" name="completed" value="1"/>
             </label>
           </div>
           <label
@@ -73,21 +74,17 @@
           </label>
           <input type="hidden" id="timestamp" name="timestamp"/>
 
-          <div><button type="submit" id="create">Erstellen</button></div>
-          <div>
-            <button type="submit" id="createAndOverview">
-              Erstellen & zur Übersicht
-            </button>
-          </div>
+          <div><button type="submit" id="create" class="create-button">Erstellen</button></div>
+
           <div><button type="submit" id="overview">Übersicht</button></div>
         </form>
       </div>
 
-      <div class="todo-list display-bottom">
+      <span class="box">   <div class="todo-list display-bottom">
       <div class="todo-title alignCenter"></div>
-        <span class="box">
+
           <button class="create-new-item" id="openCreate"><ion-icon name="add-circle-outline" size="large"></ion-icon> Neues Todo erstellen</button>
-        </span>
+
       <div class="todo-filter">
         <div class="box">
           <select class="filter">
@@ -109,7 +106,7 @@
 
 
         <ul></ul>
-      </div>
+   </div> </span>
     </main>
 
     <footer>

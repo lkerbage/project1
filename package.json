@@ -2,11 +2,11 @@
   "name": "projekt1",
   "version": "1.0.0",
   "description": "project1",
-  "main": "./source/scripts/index.js",
+  "main": "./source/index.js",
   "type": "module",
   "scripts": {
     "test": "test",
-    "start": "node source/index.js"
+    "start": "nodemon source/index.js"
   },
   "author": "Laurent Kerbage",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "prettier": "2.7.1"
   },
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+
   }
 }

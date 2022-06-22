@@ -1,8 +1,7 @@
 import { ErrorMessages } from '../constants/enums.js';
-import todoData from '../model/model.js';
+import { todoData } from '../model/model.js';
 
 const data = todoData;
-const create = document.querySelector('#create');
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
 const todoTitle = document.querySelector('.todo-title');
@@ -11,7 +10,6 @@ const todoFilter = document.querySelector('.filter');
 const showByStatus = document.querySelector('.show-by-status');
 const displayTop = document.querySelector('.display-top');
 const displayBottom = document.querySelector('.display-bottom');
-const createNew = document.querySelector('.create-new-item');
 
 const dataLength = data.length;
 const hideBottom = () => displayBottom.style.display = 'none';
@@ -36,9 +34,9 @@ const displayData = (currentData = data) => {
         index,
       ) => `<li class="container wrapper alignCenter" data-id="${index}">
 <div class="itemContainerTop">
-          <div className="box"><button class="editButton" data-id="${index}">Bearbeiten</button></div> 
-          <div className="box"><strong>${todo.title}</strong></div> 
-          <div className="box"><input data-id="${index}" class="toggle" data-status="status" type="checkbox" ${
+          <div ><button class="editButton" data-id="${index}">Bearbeiten</button></div> 
+          <div ><strong>${todo.title}</strong></div> 
+          <div ><input data-id="${index}" class="toggle" data-status="status" type="checkbox" ${
   todo.completed ? 'checked' : ''
 }/></div> 
        </div>   
@@ -122,6 +120,8 @@ function init() {
   if (dataLength > 0) {
     displayData();
     displayOpenAndCompletedTodos(dataLength);
+
+    // todo separate fn
     const getDateDifferenceInDays = () => {
       const d = new Date(1549312452);
       let month = `${d.getMonth() + 1}`;
@@ -147,41 +147,50 @@ const submitTodo = () => {
     title: title.value,
     importance: importance.value,
     dueDate: dueDate.value,
-    completed: completed.value,
+    completed: Number(completed.checked),
     description: description.value,
     timestamp: Date.now(),
   };
   data.push(newTodo);
-
   alert(JSON.stringify(newTodo));
   // todo POST todo
 };
 
-const submitCreate = (ev) => {
-  submitTodo(ev);
+const submit = (ev) => {
+  const { id } = ev.target;
+  if (id === 'create') {
+    submitTodo(ev);
+    processItem(ev);
+  } else if (id === 'createAndOverview') {
+    processItem(ev);
+  } else {
+    hideTop();
+  }
 };
 
 const validationText = () => {
   if (title.validity.valueMissing) {
     title.setCustomValidity(ErrorMessages.ERROR_TITLE);
-  }
-  if (importance.validity.rangeUnderflow) {
+  } else { title.setCustomValidity(''); }
+  if (importance.validity.rangeUnderflow || importance.validity.valueMissing) {
     importance.setCustomValidity(ErrorMessages.IMPORTANCE);
+  } else {
+    importance.setCustomValidity('');
   }
   if (dueDate.validity.valueMissing) {
     dueDate.setCustomValidity(ErrorMessages.DUE_DATE);
-  }
+  } else { dueDate.setCustomValidity(''); }
 };
 
-form.addEventListener('submit', (ev) => {
-  submitCreate(ev);
+// todo change back to "submit"
+form.addEventListener('click', (ev) => {
+  submit(ev);
 });
-title.addEventListener('input', validationText);
+form.addEventListener('click', validationText);
 todoList.addEventListener('click', (ev) => {
   processItem(ev);
 });
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
 showByStatus.addEventListener('change', (ev) => completedItems(ev));
-createNew.addEventListener('click', () => hideBottom());
 
 init();
