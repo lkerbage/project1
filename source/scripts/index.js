@@ -12,7 +12,6 @@ const _displayTop = document.querySelector('.display-top');
 const _displayBottom = document.querySelector('.display-bottom');
 const createButton = document.querySelector('.create-new-item');
 const overview = document.querySelector(('#overview'));
-const openCreate = document.querySelector(('.create-new-item'));
 
 const dataLength = data.length;
 
@@ -216,6 +215,9 @@ createButton.addEventListener('click', () => {
 overview.addEventListener('click', () => {
   hideTop(); displayBottom();
 });
-openCreate.addEventListener('click', () => displayTop());
+createButton.addEventListener('click', () => {
+  displayTop();
+  hideBottom();
+});
 
 init();
