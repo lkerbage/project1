@@ -35,13 +35,21 @@ const showImportance = (_importance) => {
   return `<span className="displayInline">${flashes.join('')}</span>`;
 };
 
-// todo moment.js
-const getDaysDueDate = (dateNow) =>
-  // const now = moment(new Date()); // todays date
-  // const end = moment('2015-12-1'); // another date
-  // const duration = moment.duration(now.diff(end));
-  // return duration.asDays();
-  '2 ';
+const getDaysDueDate = (dateNow, todo) => {
+  const today = dateNow;
+  const tomorrow = new Date(today);
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const locale = navigator.language;
+
+  const date = new Date(todo.dueDate).toLocaleDateString(locale);
+  if (date === new Date().toLocaleDateString(locale)) {
+    return 'Heute fällig';
+  }
+  if (date === new Date(tomorrow).toLocaleDateString(locale)) {
+    return 'Morgen fällig';
+  }
+  return `Fällig am ${date}`;
+};
 const displayData = (currentData = data) => {
   const dateNow = Date.now();
   ul.innerHTML = currentData
@@ -58,7 +66,7 @@ const displayData = (currentData = data) => {
 }/></div> 
        </div>   
 <div class="itemContainerBottom">
-  <div class="box ">In ${getDaysDueDate(dateNow, todo.dueDate)} Tagen</div>
+  <div class="box ">${getDaysDueDate(dateNow, todo)}</div>
   <div class="box ">${todo.description}</div>
   <div class="box ">${showImportance(todo.importance)}</div>
     </div>

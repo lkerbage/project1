@@ -2,7 +2,7 @@ export const todoData = [
   {
     title: 'a Titel 1',
     importance: '2',
-    dueDate: '2022-09-25',
+    dueDate: '2022-06-25',
     completed: 1,
     description: 'Beschreibung',
     timestamp: 1655438428,
@@ -19,7 +19,7 @@ export const todoData = [
   {
     title: 'c Titel 3',
     importance: '3',
-    dueDate: '2022-09-27',
+    dueDate: '2022-06-24',
     completed: 1,
     description: 'Beschreibung',
     timestamp: 1655438428,

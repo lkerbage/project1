@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-import { todoRoutes } from './routes/todo-routes';
-import { logRequest } from './util/simple-logger';
+import { todoRoutes } from './routes/todo-routes.js';
+import { logRequest } from './util/simple-logger.js';
 
 const app = express();
 const port = 3000;

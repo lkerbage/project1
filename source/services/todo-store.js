@@ -47,4 +47,5 @@ class TodoStore {
   }
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export const todoStore = new TodoStore();
