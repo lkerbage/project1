@@ -27,7 +27,7 @@ export const todoData = [
   {
     title: 'd Titel 44',
     importance: '3',
-    dueDate: '2022-09-28',
+    dueDate: '2022-05-28',
     completed: 0,
     description: 'Beschreibung',
     timestamp: 1655438428,

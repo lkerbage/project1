@@ -39,13 +39,13 @@ const getDaysDueDate = (dateNow, todo) => {
   const today = dateNow;
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
-  const locale = navigator.language;
 
-  const date = new Date(todo.dueDate).toLocaleDateString(locale);
-  if (date === new Date().toLocaleDateString(locale)) {
+  const date = new Date(todo.dueDate).toLocaleDateString('de');
+  if (date === new Date().toLocaleDateString('de')) {
+    console.log(new Date().toLocaleDateString('de'));
     return 'Heute fällig';
   }
-  if (date === new Date(tomorrow).toLocaleDateString(locale)) {
+  if (date === new Date(tomorrow).toLocaleDateString('de')) {
     return 'Morgen fällig';
   }
   return `Fällig am ${date}`;
