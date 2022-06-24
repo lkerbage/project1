@@ -12,6 +12,7 @@ const _displayTop = document.querySelector('.display-top');
 const _displayBottom = document.querySelector('.display-bottom');
 const createButton = document.querySelector('.create-new-item');
 const overview = document.querySelector(('#overview'));
+const submitButton = document.querySelector(('.create-button'));
 
 const dataLength = data.length;
 
@@ -67,6 +68,10 @@ const displayData = (currentData = data) => {
     .join('');
 };
 
+const changeButtonText = () => {
+  submitButton.innerHTML = 'editieren';
+};
+
 const updateItem = (id) => {
   hideBottom();
   const updateData = data[id];
@@ -93,6 +98,7 @@ const processItem = (ev) => {
     updateItem(id);
     displayTop();
     hideBottom();
+    changeButtonText();
   }
   if (status) {
     console.log('status item no. ', ev.target.dataset.id, status);
@@ -134,7 +140,6 @@ function init() {
   if (dataLength > 0) {
     displayData();
     displayOpenAndCompletedTodos(dataLength);
-    hideBottom();
   } else {
     ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
   }
@@ -159,7 +164,7 @@ const submit = (ev) => {
   if (id === 'create') {
     submitTodo(ev);
     processItem(ev);
-  } else {
+    hideTop(); displayBottom();
   }
 };
 
