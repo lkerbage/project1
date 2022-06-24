@@ -1,3 +1,5 @@
+// import * as moment from 'moment';
+
 import { ErrorMessages } from '../constants/enums.js';
 import { todoData } from '../model/model.js';
 
@@ -10,21 +12,33 @@ const todoFilter = document.querySelector('.filter');
 const showByStatus = document.querySelector('.show-by-status');
 const displayTop = document.querySelector('.display-top');
 const displayBottom = document.querySelector('.display-bottom');
+const createButton = document.querySelector('.create-new-item');
 
 const dataLength = data.length;
-const hideBottom = () => displayBottom.style.display = 'none';
-const hideTop = () => displayTop.style.display = 'none';
 
-const showImportance = (importance) => {
+const { title } = form.elements;
+const { importance } = form.elements;
+const { dueDate } = form.elements;
+const { completed } = form.elements;
+const { description } = form.elements;
+
+const hideBottom = () => (displayBottom.style.display = 'none');
+
+const showImportance = (_importance) => {
   const flashes = [];
-  for (let i = 0; i < importance; i++) {
+  for (let i = 0; i < _importance; i++) {
     flashes.push("<ion-icon name='flash'></ion-icon>");
   }
   return `<span className="displayInline">${flashes.join('')}</span>`;
 };
 
-const getDaysDueDate = (dateNow, dueDate) => Math.round((dateNow / 1000 - dueDate) / 3600 / 24);
-
+// todo moment.js
+const getDaysDueDate = (dateNow) =>
+  // const now = moment(new Date()); // todays date
+  // const end = moment('2015-12-1'); // another date
+  // const duration = moment.duration(now.diff(end));
+  // return duration.asDays();
+  '2 ';
 const displayData = (currentData = data) => {
   const dateNow = Date.now();
   ul.innerHTML = currentData
@@ -57,7 +71,9 @@ const updateItem = (id) => {
   const formIds = Object.keys(updateData);
   formIds.forEach((name) => {
     form.elements[name].value = updateData[name];
-    if (name === 'completed' && form.elements[name].value == 1) { form.elements[name].setAttribute('checked', 'checked'); }
+    if (name === 'completed' && form.elements[name].value == 1) {
+      form.elements[name].setAttribute('checked', 'checked');
+    }
   });
 };
 
@@ -102,12 +118,6 @@ const completedItems = (ev) => {
   displayData(filterData);
 };
 
-const { title } = form.elements;
-const { importance } = form.elements;
-const { dueDate } = form.elements;
-const { completed } = form.elements;
-const { description } = form.elements;
-
 const displayOpenAndCompletedTodos = (_dataLength) => {
   const completedTodos = data.filter((todo) => todo.completed == 1);
   const numberOfIncompleted = _dataLength - completedTodos.length;
@@ -121,7 +131,7 @@ function init() {
     displayData();
     displayOpenAndCompletedTodos(dataLength);
 
-    // todo separate fn
+    // todo separate fn, moment js
     const getDateDifferenceInDays = () => {
       const d = new Date(1549312452);
       let month = `${d.getMonth() + 1}`;
@@ -139,7 +149,9 @@ function init() {
       return [year, month, day].join('-');
     };
     getDateDifferenceInDays();
-  } else { ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>'; }
+  } else {
+    ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
+  }
 }
 
 const submitTodo = () => {
@@ -161,17 +173,16 @@ const submit = (ev) => {
   if (id === 'create') {
     submitTodo(ev);
     processItem(ev);
-  } else if (id === 'createAndOverview') {
-    processItem(ev);
   } else {
-    hideTop();
   }
 };
 
 const validationText = () => {
   if (title.validity.valueMissing) {
     title.setCustomValidity(ErrorMessages.ERROR_TITLE);
-  } else { title.setCustomValidity(''); }
+  } else {
+    title.setCustomValidity('');
+  }
   if (importance.validity.rangeUnderflow || importance.validity.valueMissing) {
     importance.setCustomValidity(ErrorMessages.IMPORTANCE);
   } else {
@@ -179,11 +190,12 @@ const validationText = () => {
   }
   if (dueDate.validity.valueMissing) {
     dueDate.setCustomValidity(ErrorMessages.DUE_DATE);
-  } else { dueDate.setCustomValidity(''); }
+  } else {
+    dueDate.setCustomValidity('');
+  }
 };
 
-// todo change back to "submit"
-form.addEventListener('click', (ev) => {
+form.addEventListener('submit', (ev) => {
   submit(ev);
 });
 form.addEventListener('click', validationText);
@@ -192,5 +204,6 @@ todoList.addEventListener('click', (ev) => {
 });
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
 showByStatus.addEventListener('change', (ev) => completedItems(ev));
+createButton.addEventListener('click', () => hideBottom());
 
 init();

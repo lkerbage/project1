@@ -107,7 +107,8 @@ div > button {
   display: block;
 }
 
-li > button, span>button {
+li > button,
+span > button {
   width: var(--width50);
 }
 
@@ -238,7 +239,6 @@ button:focus {
 .toggle:checked:before {
   left: 32px;
 }
-
 
 .border-red {
   border: 1px dashed red;

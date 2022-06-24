@@ -26,10 +26,9 @@
           <li>- Abspeichern der Daten auf dem Server</li>
           <li>Erstelle neues Todo</li>
           <li>validate ww3 school</li>
-          <li>clicked create -> update</li>
           <li>Theme switcher</li>
           <li>.js refactoring</li>
-
+          <li>.merge the 2 remote branches main-> master</li>
         </x>
       </nav>
     </header>
@@ -59,54 +58,67 @@
           <div>
             <label
               >Zu erledigen bis
-              <input type="date" name="dueDate" id="dueDate" required/>
+              <input type="date" name="dueDate" id="dueDate" required />
             </label>
           </div>
           <div>
             <label class="checkbox">
               erledigt
-              <input  type="checkbox" id="completed" name="completed" value="1"/>
+              <input
+                type="checkbox"
+                id="completed"
+                name="completed"
+                value="1"
+              />
             </label>
           </div>
           <label
             >Beschreibung
             <textarea name="description" id="description"></textarea>
           </label>
-          <input type="hidden" id="timestamp" name="timestamp"/>
+          <input type="hidden" id="timestamp" name="timestamp" />
 
-          <div><button type="submit" id="create" class="create-button">Erstellen</button></div>
+          <div>
+            <button type="submit" id="create" class="create-button">
+              Erstellen
+            </button>
+          </div>
 
           <div><button type="submit" id="overview">Übersicht</button></div>
         </form>
       </div>
 
-      <span class="box">   <div class="todo-list display-bottom">
-      <div class="todo-title alignCenter"></div>
+      <span class="box">
+        <div class="todo-list display-bottom">
+          <div class="todo-title alignCenter"></div>
 
-          <button class="create-new-item" id="openCreate"><ion-icon name="add-circle-outline" size="large"></ion-icon> Neues Todo erstellen</button>
+          <button class="create-new-item" id="openCreate">
+            <ion-icon name="add-circle-outline" size="large"></ion-icon> Neues
+            Todo erstellen
+          </button>
 
-      <div class="todo-filter">
-        <div class="box">
-          <select class="filter">
-            <option value="" selected>Filtern nach ...</option>
-            <option value="title">Titel</option>
-            <option value="importance">Dringlichkeit</option>
-            <option value="dueDate">Erledigungsdatum</option>
-            <option value="timestamp">Erstellungsdatum</option>
-          </select>
+          <div class="todo-filter">
+            <div class="box">
+              <select class="filter">
+                <option value="" selected>Filtern nach ...</option>
+                <option value="title">Titel</option>
+                <option value="importance">Dringlichkeit</option>
+                <option value="dueDate">Erledigungsdatum</option>
+                <option value="timestamp">Erstellungsdatum</option>
+              </select>
+            </div>
+            <div class="box">
+              <select class="show-by-status">
+                <option value="a" selected>Alle Todos anzeigen</option>
+                <option value="0">offene Todos anzeigen</option>
+                <option value="1">erledigte Todos anzeigen</option>
+              </select>
+            </div>
+          </div>
+
+          <ul></ul>
         </div>
-        <div class="box">
-          <select class="show-by-status">
-            <option value="a" selected>Alle Todos anzeigen</option>
-            <option value="0">offene Todos anzeigen</option>
-            <option value="1">erledigte Todos anzeigen</option>
-          </select>
-        </div>
-      </div>
-
-
-        <ul></ul>
-   </div> </span>
+      </span>
     </main>
 
     <footer>
