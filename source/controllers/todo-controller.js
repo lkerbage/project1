@@ -6,11 +6,23 @@ class TodoController {
       res.json(await store.revision());
     };
 
+    this.getNotes = async (req, res) => {
+      try {
+        res.json(await store.all());
+      } catch (err) {
+        res.status(500).json('DB failure when retrieving notes (get)');
+      }
+    };
+
     this.addNote = async (req, res) => {
       try {
-        res.json(await store.add(req.body.note));
-      } catch (err) {
-        res.status(500).json('DB failure when adding new note');
+        console.log(req.body);
+        res.json(await store.add(req.body));
+        // eslint-disable-next-line max-len
+        await store.add(req.body).then((result) => { res.send(result); }).catch((err) => { res.send(err); });
+        res.send(req.body);
+      } catch {
+        res.status(500).json('DB failure when retrieving notes (POST))');
       }
     };
 
@@ -18,15 +30,7 @@ class TodoController {
       try {
         res.json(await store.update(req.body.note));
       } catch (err) {
-        res.status(500).json('DB failure when retrieving notes');
-      }
-    };
-
-    this.getNotes = async (req, res) => {
-      try {
-        res.json(await store.all(req.query.orderBy, req.query.orderDir, req.query.filterBy));
-      } catch (err) {
-        res.status(500).json('DB failure when retrieving notes');
+        res.status(500).json('DB failure when retrieving notes (update))');
       }
     };
 

@@ -1,7 +1,21 @@
 import { ErrorMessages } from '../constants/enums.js';
-import { todoData } from '../model/model.js';
 
-const data = todoData;
+const data = await fetch('/notes/', {
+  method: 'GET',
+  mode: 'cors',
+  cache: 'no-cache', //
+  credentials: 'same-origin',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  redirect: 'follow',
+  referrerPolicy: 'no-referrer',
+}).then((res) => res.json()).then((result) => result).catch((err) => {
+  console.error('get data err', err);
+});
+
+// const data = [];
+
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
 const todoTitle = document.querySelector('.todo-title');
@@ -151,7 +165,7 @@ function init() {
   }
 }
 
-const submitTodo = () => {
+const submitTodo = async () => {
   const newTodo = {
     title: title.value,
     importance: importance.value,
@@ -160,17 +174,31 @@ const submitTodo = () => {
     description: description.value,
     timestamp: Date.now(),
   };
-  data.push(newTodo);
-  alert(JSON.stringify(newTodo));
-  // todo POST todo
+  // data.push(newTodo);
+  await fetch('/notes/', {
+    method: 'POST',
+    mode: 'cors',
+    cache: 'no-cache',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    redirect: 'follow',
+    referrerPolicy: 'no-referrer',
+    body: JSON.stringify(newTodo),
+  }).then((res) => res.json()).then((result) => {
+    data.push(newTodo);
+  }).catch((err) => {
+    console.error(err);
+  });
 };
 
-const submit = (ev) => {
+const submit = async (ev) => {
   ev.preventDefault();
-
-  submitTodo(ev);
+  await submitTodo(ev);
   processItem(ev);
-  hideTop(); displayBottom();
+  hideTop();
+  displayBottom();
 };
 
 const validationText = () => {

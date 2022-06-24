@@ -7,20 +7,14 @@ class TodoStore {
     this._revision = 0;
   }
 
-  // static _getFilter(criteria) {
-  //   switch (true) {
-  //     case (criteria === 'not-done'):
-  //       return { done: false };
-  //     case (criteria === 'over-due'):
-  //       return { $and: [{ dueDate: { $lt: (new Date().getTime()) } }, { done: false }] };
-  //     default:
-  //       return {};
-  //   }
-  // }
+  async all() {
+    console.log('aync all');
+    return this._db.find((el) => el).exec();
+  }
 
-  // async revision() {
-  //   return this._revision;
-  // }
+  async get(id) {
+    return this._db.findOne({ _id: id });
+  }
 
   async add(note) {
     await this._db.insert(note);
@@ -36,14 +30,6 @@ class TodoStore {
     const num = await this._db.remove({ _id: id }, {});
     if (num !== 0) this._revision++;
     return { revision: this._revision, numDeleted: num };
-  }
-
-  async get(id) {
-    return this._db.findOne({ _id: id });
-  }
-
-  async all(orderBy, orderDir, filterBy) {
-    return this._db.find(TodoStore._getFilter(filterBy)).sort({ [orderBy]: orderDir }).exec();
   }
 }
 

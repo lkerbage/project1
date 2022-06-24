@@ -5,7 +5,9 @@ const router = express.Router();
 router.get('/revision/', todoController.getRevision);
 router.post('/notes/', todoController.addNote);
 router.put('/notes/', todoController.updateNote);
-router.get('/notes/', todoController.getNotes);
+router.get('/notes/', (req, res) => {
+  todoController.getNotes(req, res);
+});
 router.get('/notes/:id/', todoController.getNoteById);
 router.delete('/notes/:id/', todoController.deleteNote);
 
