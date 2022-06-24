@@ -1,6 +1,6 @@
 import { ErrorMessages } from '../constants/enums.js';
 
-const data = await fetch('/notes/', {
+let data = await fetch('/notes/', {
   method: 'GET',
   mode: 'cors',
   cache: 'no-cache', //
@@ -14,7 +14,7 @@ const data = await fetch('/notes/', {
   console.error('get data err', err);
 });
 
-// const data = [];
+if (!data) { data = []; }
 
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
@@ -94,6 +94,7 @@ const changeButtonText = () => {
 
 const updateItem = (id) => {
   hideBottom();
+  displayTop();
   const updateData = data[id];
   const formIds = Object.keys(updateData);
   formIds.forEach((name) => {
