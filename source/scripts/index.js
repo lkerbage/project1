@@ -134,25 +134,7 @@ function init() {
   if (dataLength > 0) {
     displayData();
     displayOpenAndCompletedTodos(dataLength);
-
-    // todo separate fn, moment js
-    const getDateDifferenceInDays = () => {
-      const d = new Date(1549312452);
-      let month = `${d.getMonth() + 1}`;
-      let day = `${d.getDate()}`;
-      const year = d.getFullYear();
-
-      if (month.length < 2) month = `0${month}`;
-      if (day.length < 2) day = `0${day}`;
-      const date1 = [year, month, day].join('-');
-      const date2 = '2022-09-29';
-      const diffTime = Math.abs(date2 - date1);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      console.log(`${diffDays} ${date1} ${date2} days`);
-
-      return [year, month, day].join('-');
-    };
-    getDateDifferenceInDays();
+    hideBottom();
   } else {
     ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
   }
@@ -199,6 +181,8 @@ const validationText = () => {
   }
 };
 
+init();
+
 form.addEventListener('submit', (ev) => {
   submit(ev);
 });
@@ -209,15 +193,9 @@ todoList.addEventListener('click', (ev) => {
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
 showByStatus.addEventListener('change', (ev) => completedItems(ev));
 createButton.addEventListener('click', () => {
-  hideTop();
-  displayBottom();
+  hideBottom();
+  displayTop();
 });
 overview.addEventListener('click', () => {
   hideTop(); displayBottom();
 });
-createButton.addEventListener('click', () => {
-  displayTop();
-  hideBottom();
-});
-
-init();
