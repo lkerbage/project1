@@ -1,5 +1,3 @@
-// import * as moment from 'moment';
-
 import { ErrorMessages } from '../constants/enums.js';
 import { todoData } from '../model/model.js';
 
@@ -10,9 +8,11 @@ const todoTitle = document.querySelector('.todo-title');
 const todoList = document.querySelector('.todo-list');
 const todoFilter = document.querySelector('.filter');
 const showByStatus = document.querySelector('.show-by-status');
-const displayTop = document.querySelector('.display-top');
-const displayBottom = document.querySelector('.display-bottom');
+const _displayTop = document.querySelector('.display-top');
+const _displayBottom = document.querySelector('.display-bottom');
 const createButton = document.querySelector('.create-new-item');
+const overview = document.querySelector(('#overview'));
+const openCreate = document.querySelector(('.create-new-item'));
 
 const dataLength = data.length;
 
@@ -22,7 +22,10 @@ const { dueDate } = form.elements;
 const { completed } = form.elements;
 const { description } = form.elements;
 
-const hideBottom = () => (displayBottom.style.display = 'none');
+const hideBottom = () => (_displayBottom.style.display = 'none');
+const hideTop = () => (_displayTop.style.display = 'none');
+const displayTop = () => (_displayTop.style.display = 'block');
+const displayBottom = () => (_displayBottom.style.display = 'block');
 
 const showImportance = (_importance) => {
   const flashes = [];
@@ -89,6 +92,8 @@ const processItem = (ev) => {
   if (ev.target.className === 'editButton') {
     const { id } = ev.target.dataset;
     updateItem(id);
+    displayTop();
+    hideBottom();
   }
   if (status) {
     console.log('status item no. ', ev.target.dataset.id, status);
@@ -204,6 +209,13 @@ todoList.addEventListener('click', (ev) => {
 });
 todoFilter.addEventListener('change', (ev) => filterItems(ev));
 showByStatus.addEventListener('change', (ev) => completedItems(ev));
-createButton.addEventListener('click', () => hideBottom());
+createButton.addEventListener('click', () => {
+  hideTop();
+  displayBottom();
+});
+overview.addEventListener('click', () => {
+  hideTop(); displayBottom();
+});
+openCreate.addEventListener('click', () => displayTop());
 
 init();
