@@ -1,4 +1,4 @@
-import { todoStore } from '../services/todo-store.js';
+import { todoStore } from '../services/todo-store';
 
 class TodoController {
   constructor(store) {
