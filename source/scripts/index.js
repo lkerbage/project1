@@ -35,14 +35,13 @@ const showImportance = (_importance) => {
   return `<span className="displayInline">${flashes.join('')}</span>`;
 };
 
-const getDaysDueDate = (dateNow, todo) => {
-  const today = dateNow;
+const getDaysDueDate = (todo) => {
+  const today = Date.now();
   const tomorrow = new Date(today);
   tomorrow.setDate(tomorrow.getDate() + 1);
-
   const date = new Date(todo.dueDate).toLocaleDateString('de');
+
   if (date === new Date().toLocaleDateString('de')) {
-    console.log(new Date().toLocaleDateString('de'));
     return 'Heute fällig';
   }
   if (date === new Date(tomorrow).toLocaleDateString('de')) {
@@ -51,7 +50,6 @@ const getDaysDueDate = (dateNow, todo) => {
   return `Fällig am ${date}`;
 };
 const displayData = (currentData = data) => {
-  const dateNow = Date.now();
   ul.innerHTML = currentData
     .map(
       (
@@ -66,7 +64,7 @@ const displayData = (currentData = data) => {
 }/></div> 
        </div>   
 <div class="itemContainerBottom">
-  <div class="box ">${getDaysDueDate(dateNow, todo)}</div>
+  <div class="box ">${getDaysDueDate(todo)}</div>
   <div class="box ">${todo.description}</div>
   <div class="box ">${showImportance(todo.importance)}</div>
     </div>
@@ -168,12 +166,11 @@ const submitTodo = () => {
 };
 
 const submit = (ev) => {
-  const { id } = ev.target;
-  if (id === 'create') {
-    submitTodo(ev);
-    processItem(ev);
-    hideTop(); displayBottom();
-  }
+  ev.preventDefault();
+
+  submitTodo(ev);
+  processItem(ev);
+  hideTop(); displayBottom();
 };
 
 const validationText = () => {
