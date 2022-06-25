@@ -43,7 +43,7 @@ const displayTop = () => (_displayTop.style.display = 'block');
 const displayBottom = () => (_displayBottom.style.display = 'block');
 const titleFocus = () => title.focus();
 const changeButtonText = () => {
-  submitButton.innerHTML = 'editieren';
+  submitButton.innerHTML = 'Bearbeiten';
 };
 
 const showImportance = (_importance) => {
@@ -180,23 +180,42 @@ const submitTodo = async () => {
     description: description.value,
     timestamp: Date.now(),
   };
-  // data.push(newTodo);
-  await fetch('/notes/', {
-    method: 'POST',
-    mode: 'cors',
-    cache: 'no-cache',
-    credentials: 'same-origin',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    redirect: 'follow',
-    referrerPolicy: 'no-referrer',
-    body: JSON.stringify(newTodo),
-  }).then((res) => res.json()).then((result) => {
-    data.push(newTodo);
-  }).catch((err) => {
-    console.error(err);
-  });
+  if (submitButton.innerHTML === 'Erstellen') {
+    await fetch('/notes/', {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(newTodo),
+    }).then((res) => res.json()).then((result) => {
+      data.push(newTodo);
+    }).catch((err) => {
+      console.error(err);
+    });
+  }
+  if (submitButton.innerHTML === 'Bearbeiten') {
+    await fetch('/notes/', {
+      method: 'PUT',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(newTodo),
+    }).then((res) => res.json()).then((result) => {
+      data.push(newTodo);
+    }).catch((err) => {
+      console.error(err);
+    });
+  }
 };
 
 const submit = async (ev) => {
@@ -240,6 +259,7 @@ createButton.addEventListener('click', () => {
   hideBottom();
   displayTop();
   titleFocus();
+  submitButton.innerHTML = 'Erstellen';
 });
 overview.addEventListener('click', () => {
   hideTop(); displayBottom();
