@@ -11,14 +11,15 @@ let data = await fetch('/notes/', {
   redirect: 'follow',
   referrerPolicy: 'no-referrer',
 }).then((res) => res.json()).then((result) => result).catch((err) => {
-  console.error('get data err', err);
+  console.error('GET err', err);
 });
 
-if (!data) { data = []; }
+if (!data) {
+  data = [];
+}
 
 const form = document.querySelector('#form');
 const ul = document.querySelector('ul');
-const todoTitle = document.querySelector('.todo-title');
 const todoList = document.querySelector('.todo-list');
 const todoFilter = document.querySelector('.filter');
 const showByStatus = document.querySelector('.show-by-status');
@@ -57,7 +58,8 @@ const showImportance = (_importance) => {
 const getCompleted = (s) => {
   if (s === 'y') {
     return '<ion-icon style="font-size:25px;color:forestgreen" name="checkmark-circle-outline"></ion-icon>';
-  } return '<ion-icon style="font-size: 25px; color:red" name="alert-outline"></ion-icon>';
+  }
+  return '<ion-icon style="font-size: 25px; color:red" name="alert-outline"></ion-icon>';
 };
 
 const getDaysDueDate = (todo) => {
@@ -153,18 +155,9 @@ const completedItems = (ev) => {
   displayData(filterData);
 };
 
-const displayOpenAndCompletedTodos = (_dataLength) => {
-  const completedTodos = data.filter((todo) => todo.completed == 1);
-  const numberOfIncompleted = _dataLength - completedTodos.length;
-  todoTitle.innerHTML = `<h2> ${
-    _dataLength === 1 ? `${_dataLength} Aufgabe` : `${_dataLength}  Aufgaben,`
-  } davon ${numberOfIncompleted} offene Aufgaben</h2>`;
-};
-
 function init() {
   if (dataLength > 0) {
     displayData();
-    displayOpenAndCompletedTodos(dataLength);
   } else {
     todoFilters.style.display = 'none';
     ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
@@ -197,7 +190,6 @@ const submitTodo = async () => {
     })
       .then(() => {
         const newData = [...data, { ...newTodo }];
-
         displayData(newData);
       }).catch((err) => {
         console.error(err);
@@ -216,6 +208,7 @@ const submitTodo = async () => {
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(newTodo),
     }).then((res) => res.json()).then(() => {
+      // todo
       data.push(newTodo);
     }).catch((err) => {
       console.error(err);
