@@ -14,20 +14,22 @@ class TodoController {
       }
     };
 
-    this.addNote = async (req, res) => {
+    this.addNote = async (req, res, next) => {
       try {
         res.json(await store.add(req.body));
         res.send(req.body);
-      } catch {
+      } catch (err) {
         res.status(500).json('DB failure when retrieving notes (POST))');
+        return next(err);
       }
     };
 
-    this.updateNote = async (req, res) => {
+    this.updateNote = async (req, res, next) => {
       try {
         res.json(await store.update(req.body.note));
       } catch (err) {
         res.status(500).json('DB failure when retrieving notes (update))');
+        return next(err);
       }
     };
   }

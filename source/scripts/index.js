@@ -47,6 +47,24 @@ const changeButtonText = () => {
   submitButton.innerHTML = 'Bearbeiten';
 };
 
+const validationText = () => {
+  if (title.validity.valueMissing) {
+    title.setCustomValidity(ErrorMessages.ERROR_TITLE);
+  } else {
+    title.setCustomValidity('');
+  }
+  if (importance.validity.rangeUnderflow || importance.validity.valueMissing) {
+    importance.setCustomValidity(ErrorMessages.IMPORTANCE);
+  } else {
+    importance.setCustomValidity('');
+  }
+  if (dueDate.validity.valueMissing) {
+    dueDate.setCustomValidity(ErrorMessages.DUE_DATE);
+  } else {
+    dueDate.setCustomValidity('');
+  }
+};
+
 const showImportance = (_importance) => {
   const flashes = [];
   for (let i = 0; i < _importance; i++) {
@@ -190,7 +208,8 @@ const submitTodo = async () => {
     })
       .then(() => {
         const newData = [...data, { ...newTodo }];
-        displayData(newData);
+        // displayData(newData);
+        location.reload();
       }).catch((err) => {
         console.error(err);
       });
@@ -222,24 +241,6 @@ const submit = async (ev) => {
   processItem(ev);
   hideTop();
   displayBottom();
-};
-
-const validationText = () => {
-  if (title.validity.valueMissing) {
-    title.setCustomValidity(ErrorMessages.ERROR_TITLE);
-  } else {
-    title.setCustomValidity('');
-  }
-  if (importance.validity.rangeUnderflow || importance.validity.valueMissing) {
-    importance.setCustomValidity(ErrorMessages.IMPORTANCE);
-  } else {
-    importance.setCustomValidity('');
-  }
-  if (dueDate.validity.valueMissing) {
-    dueDate.setCustomValidity(ErrorMessages.DUE_DATE);
-  } else {
-    dueDate.setCustomValidity('');
-  }
 };
 
 init();

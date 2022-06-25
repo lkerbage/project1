@@ -2,7 +2,7 @@ import Datastore from 'nedb-promises';
 
 class TodoStore {
   constructor() {
-    const _options = { filename: './data/todo-notes.db', autoload: true };
+    const _options = { filename: './data/todo-notes.db' };
     this._db = new Datastore(_options);
     this._revision = 0;
   }
@@ -15,12 +15,10 @@ class TodoStore {
     const promise = this._db.insert(note);
     const resolved = await promise;
     console.log(resolved, 'RESOLVED');
-    return this.all();
   }
 
   async update(note) {
     await this._db.update({ timestamp: (note.timestamp) }, { $set: note });
-    return this.all();
   }
 }
 
