@@ -19,7 +19,7 @@ class TodoStore {
   }
 
   async update(note) {
-    await this._db.update({ _id: (note._id) }, { $set: note });
+    await this._db.update({ timestamp: (note.timestamp) }, { $set: note });
     return this._revision++;
   }
 }

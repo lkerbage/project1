@@ -24,6 +24,7 @@ class TodoController {
     };
 
     this.updateNote = async (req, res) => {
+      console.log(req);
       try {
         res.json(await store.update(req.body.note));
       } catch (err) {

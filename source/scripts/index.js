@@ -197,6 +197,7 @@ const submitTodo = async () => {
     })
       .then(() => {
         const newData = [...data, { ...newTodo }];
+
         displayData(newData);
       }).catch((err) => {
         console.error(err);
