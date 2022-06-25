@@ -25,8 +25,9 @@ const showByStatus = document.querySelector('.show-by-status');
 const _displayTop = document.querySelector('.display-top');
 const _displayBottom = document.querySelector('.display-bottom');
 const createButton = document.querySelector('.create-new-item');
-const overview = document.querySelector(('#overview'));
-const submitButton = document.querySelector(('.create-button'));
+const overview = document.querySelector('#overview');
+const submitButton = document.querySelector('.create-button');
+const todoFilters = document.querySelector('.todo-filter');
 
 const dataLength = data.length;
 
@@ -40,6 +41,10 @@ const hideBottom = () => (_displayBottom.style.display = 'none');
 const hideTop = () => (_displayTop.style.display = 'none');
 const displayTop = () => (_displayTop.style.display = 'block');
 const displayBottom = () => (_displayBottom.style.display = 'block');
+const titleFocus = () => title.focus();
+const changeButtonText = () => {
+  submitButton.innerHTML = 'editieren';
+};
 
 const showImportance = (_importance) => {
   const flashes = [];
@@ -47,6 +52,12 @@ const showImportance = (_importance) => {
     flashes.push("<ion-icon name='flash'></ion-icon>");
   }
   return `<span className="displayInline">${flashes.join('')}</span>`;
+};
+
+const getCompleted = (s) => {
+  if (s === 'y') {
+    return '<ion-icon style="font-size:25px;color:forestgreen" name="checkmark-circle-outline"></ion-icon>';
+  } return '<ion-icon style="font-size: 25px; color:red" name="alert-outline"></ion-icon>';
 };
 
 const getDaysDueDate = (todo) => {
@@ -73,9 +84,7 @@ const displayData = (currentData = data) => {
 <div class="itemContainerTop">
           <div ><button class="editButton" data-id="${index}">Bearbeiten</button></div> 
           <div ><strong>${todo.title}</strong></div> 
-          <div ><input data-id="${index}" class="toggle" data-status="status" type="checkbox" ${
-  todo.completed ? 'checked' : ''
-}/></div> 
+          <div >${todo.completed ? getCompleted('y') : getCompleted('n')}</div> 
        </div>   
 <div class="itemContainerBottom">
   <div class="box ">${getDaysDueDate(todo)}</div>
@@ -88,17 +97,13 @@ const displayData = (currentData = data) => {
     .join('');
 };
 
-const changeButtonText = () => {
-  submitButton.innerHTML = 'editieren';
-};
-
 const updateItem = (id) => {
   hideBottom();
   displayTop();
   const updateData = data[id];
   const formIds = Object.keys(updateData);
   formIds.forEach((name) => {
-    form.elements[name].value = updateData[name];
+    if (form.elements[name]) form.elements[name].value = updateData[name];
     if (name === 'completed' && form.elements[name].value == 1) {
       form.elements[name].setAttribute('checked', 'checked');
     }
@@ -115,7 +120,6 @@ const processItem = (ev) => {
     displayData(updatedData);
   }
   if (ev.target.className === 'editButton') {
-    const { id } = ev.target.dataset;
     updateItem(id);
     displayTop();
     hideBottom();
@@ -162,6 +166,7 @@ function init() {
     displayData();
     displayOpenAndCompletedTodos(dataLength);
   } else {
+    todoFilters.style.display = 'none';
     ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
   }
 }
@@ -234,6 +239,7 @@ showByStatus.addEventListener('change', (ev) => completedItems(ev));
 createButton.addEventListener('click', () => {
   hideBottom();
   displayTop();
+  titleFocus();
 });
 overview.addEventListener('click', () => {
   hideTop(); displayBottom();

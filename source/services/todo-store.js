@@ -8,12 +8,7 @@ class TodoStore {
   }
 
   async all() {
-    console.log('aync all');
     return this._db.find((el) => el).exec();
-  }
-
-  async get(id) {
-    return this._db.findOne({ _id: id });
   }
 
   async add(note) {
@@ -24,12 +19,6 @@ class TodoStore {
   async update(note) {
     await this._db.update({ _id: (note._id) }, { $set: note });
     return this._revision++;
-  }
-
-  async delete(id) {
-    const num = await this._db.remove({ _id: id }, {});
-    if (num !== 0) this._revision++;
-    return { revision: this._revision, numDeleted: num };
   }
 }
 
