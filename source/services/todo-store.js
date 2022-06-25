@@ -12,8 +12,10 @@ class TodoStore {
   }
 
   async add(note) {
-    await this._db.insert(note);
-    return this._revision++;
+    const promise = this._db.insert(note);
+    const resolved = await promise;
+    console.log(resolved, 'RESOLVED');
+    return this.all();
   }
 
   async update(note) {

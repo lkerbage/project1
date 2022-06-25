@@ -192,11 +192,15 @@ const submitTodo = async () => {
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(newTodo),
-    }).then((res) => res.json()).then((result) => {
-      data.push(newTodo);
-    }).catch((err) => {
-      console.error(err);
-    });
+    }).then((res) => {
+      res.json();
+    })
+      .then(() => {
+        const newData = [...data, { ...newTodo }];
+        displayData(newData);
+      }).catch((err) => {
+        console.error(err);
+      });
   }
   if (submitButton.innerHTML === 'Bearbeiten') {
     await fetch('/notes/', {
@@ -210,7 +214,7 @@ const submitTodo = async () => {
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(newTodo),
-    }).then((res) => res.json()).then((result) => {
+    }).then((res) => res.json()).then(() => {
       data.push(newTodo);
     }).catch((err) => {
       console.error(err);
