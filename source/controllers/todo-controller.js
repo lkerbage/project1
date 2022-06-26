@@ -19,7 +19,7 @@ class TodoController {
         res.json(await store.add(req.body));
         res.send(req.body);
       } catch (err) {
-        res.status(500).json('DB failure when retrieving notes (POST))');
+        // res.status(500).json('DB failure when retrieving notes (POST))');
         return next(err);
       }
     };
@@ -28,7 +28,7 @@ class TodoController {
       try {
         res.json(await store.update(req.body.note));
       } catch (err) {
-        res.status(500).json('DB failure when retrieving notes (update))');
+        // res.status(500).json('DB failure when retrieving notes (update))');
         return next(err);
       }
     };

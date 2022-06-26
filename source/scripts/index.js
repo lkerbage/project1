@@ -207,8 +207,6 @@ const submitTodo = async () => {
       res.json();
     })
       .then(() => {
-        const newData = [...data, { ...newTodo }];
-        // displayData(newData);
         location.reload();
       }).catch((err) => {
         console.error(err);
@@ -226,12 +224,14 @@ const submitTodo = async () => {
       redirect: 'follow',
       referrerPolicy: 'no-referrer',
       body: JSON.stringify(newTodo),
-    }).then((res) => res.json()).then(() => {
-      // todo
-      data.push(newTodo);
-    }).catch((err) => {
-      console.error(err);
-    });
+    }).then((res) => {
+      res.json();
+    })
+      .then(() => {
+        // location.reload();
+      }).catch((err) => {
+        console.error(err);
+      });
   }
 };
 

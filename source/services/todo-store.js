@@ -12,13 +12,15 @@ class TodoStore {
   }
 
   async add(note) {
-    const promise = this._db.insert(note);
-    const resolved = await promise;
-    console.log(resolved, 'RESOLVED');
+    return await this._db.insert(note);
   }
 
   async update(note) {
-    await this._db.update({ timestamp: (note.timestamp) }, { $set: note });
+    await this._db.update({ timestamp: '1656243932807' }, {
+      $set: {
+        note,
+      },
+    });
   }
 }
 
