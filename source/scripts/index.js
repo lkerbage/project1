@@ -31,6 +31,7 @@ const submitButton = document.querySelector('.create-button');
 const todoFilters = document.querySelector('.todo-filter');
 const div = document.querySelector('div');
 const box = document.querySelector('.box');
+const wrapper = document.querySelector('.wrapper');
 const themeSwitcher = document.querySelector('#theme-switcher');
 const theme = localStorage.getItem('theme');
 
@@ -56,6 +57,7 @@ const localStorageTheme = () => {
     document.body.style.color = 'white';
     div.style.backgroundColor = 'black';
     box.style.backgroundColor = 'black';
+    wrapper.style.backgroundColor = 'black';
   } else if (theme === 'white') {
     document.body.style.backgroundColor = 'white';
     document.body.style.color = 'black';
