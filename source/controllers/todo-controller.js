@@ -25,7 +25,7 @@ class TodoController {
 
     this.updateNote = async (req, res, next) => {
       try {
-        res.json(await store.update(req.body.note));
+        res.json(await store.update(req.body.note.timestamp));
       } catch (err) {
         // res.status(500).json('DB failure when retrieving notes (update))');
         return next(err);

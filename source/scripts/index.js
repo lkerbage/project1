@@ -255,7 +255,6 @@ const submitTodo = async () => {
       res.json();
     })
       .then(() => {
-        // location.reload();
       }).catch((err) => {
         console.error(err);
       });

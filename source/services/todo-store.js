@@ -16,7 +16,7 @@ class TodoStore {
   }
 
   async update(note) {
-    await this._db.update({ timestamp: '1656243932807' }, {
+    return await this._db.update({ timestamp: note.timestamp }, {
       $set: {
         note,
       },
