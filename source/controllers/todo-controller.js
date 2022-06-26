@@ -19,7 +19,6 @@ class TodoController {
         res.json(await store.add(req.body));
         res.send(req.body);
       } catch (err) {
-        // res.status(500).json('DB failure when retrieving notes (POST))');
         return next(err);
       }
     };

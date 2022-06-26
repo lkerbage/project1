@@ -29,6 +29,10 @@ const createButton = document.querySelector('.create-new-item');
 const overview = document.querySelector('#overview');
 const submitButton = document.querySelector('.create-button');
 const todoFilters = document.querySelector('.todo-filter');
+const div = document.querySelector('div');
+const box = document.querySelector('.box');
+const themeSwitcher = document.querySelector('#theme-switcher');
+const theme = localStorage.getItem('theme');
 
 const dataLength = data.length;
 
@@ -45,6 +49,26 @@ const displayBottom = () => (_displayBottom.style.display = 'block');
 const titleFocus = () => title.focus();
 const changeButtonText = () => {
   submitButton.innerHTML = 'Bearbeiten';
+};
+const localStorageTheme = () => {
+  if (theme === 'black') {
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+    div.style.backgroundColor = 'black';
+    box.style.backgroundColor = 'black';
+  } else if (theme === 'white') {
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+  } else {
+    localStorage.setItem('theme', 'white');
+  }
+};
+
+const setTheme = () => {
+  if (theme === 'white') {
+    localStorage.setItem('theme', 'black');
+  } else { localStorage.setItem('theme', 'white'); }
+  location.reload();
 };
 
 const validationText = () => {
@@ -100,16 +124,16 @@ const displayData = (currentData = data) => {
       (
         todo,
         index,
-      ) => `<li class="container wrapper alignCenter" data-id="${index}">
-<div class="itemContainerTop">
+      ) => `<li class="container wrapper alignCenter ${theme}" data-id="${index}" >
+<div class="itemContainerTop ">
           <div ><button class="editButton" data-id="${index}">Bearbeiten</button></div> 
           <div ><strong>${todo.title}</strong></div> 
           <div >${todo.completed ? getCompleted('y') : getCompleted('n')}</div> 
        </div>   
 <div class="itemContainerBottom">
-  <div class="box ">${getDaysDueDate(todo)}</div>
-  <div class="box ">${todo.description}</div>
-  <div class="box ">${showImportance(todo.importance)}</div>
+  <div class="box ${theme}">${getDaysDueDate(todo)}</div>
+  <div class="box ${theme}">${todo.description}</div>
+  <div class="box ${theme}">${showImportance(todo.importance)}</div>
     </div>
   
   </li>`,
@@ -180,6 +204,7 @@ function init() {
     todoFilters.style.display = 'none';
     ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
   }
+  localStorageTheme();
 }
 
 const submitTodo = async () => {
@@ -263,3 +288,4 @@ createButton.addEventListener('click', () => {
 overview.addEventListener('click', () => {
   hideTop(); displayBottom();
 });
+themeSwitcher.addEventListener('click', () => setTheme());
