@@ -253,6 +253,7 @@ const submitTodo = async () => {
       body: JSON.stringify(newTodo),
     }).then((res) => {
       res.json();
+      console.log(res.json(), 'resJson');
     })
       .then(() => {
       }).catch((err) => {
