@@ -285,6 +285,7 @@ createButton.addEventListener('click', () => {
   hideBottom();
   displayTop();
   titleFocus();
+  form.reset();
   submitButton.innerHTML = 'Erstellen';
 });
 overview.addEventListener('click', () => {
