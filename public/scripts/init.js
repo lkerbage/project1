@@ -14,10 +14,11 @@ import {
 import {Display} from '../constants/enums.js';
 import {setTheme} from './theme.js';
 import {validationText} from './validationText.js';
-import {processItem} from '../services/process-item.js';
+import {processItem} from './process-item.js';
 import {completedItems, filterItems} from './filter.js';
 import {displayParts} from './displayParts.js';
-import {displayData, fetchData} from './index.js';
+import {displayData} from './index.js';
+import {  fetchData} from '../services/fetch.js';
 import {submit} from './submit.js';
 import {createNewTodo} from "./createNewTodo.js";
 import {overview as overviewFunction} from "./overview.js";

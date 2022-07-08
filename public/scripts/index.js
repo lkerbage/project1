@@ -1,36 +1,9 @@
-import { init } from './init.js';
-import { Display } from '../constants/enums.js';
-import { processItem } from '../services/process-item.js';
-import { displayParts } from './displayParts.js';
-import {
-  form, selectorDisplayBottom, selectorDisplayTop, submitButton, ul,
-} from '../constants/elements.js';
-import { getDaysDueDate } from './getDaysDueDate.js';
-import {
-  completed, description, dueDate, importance, title,
-} from '../constants/form.js';
-import { getCompleted } from './filter.js';
-import { showImportance } from './layout.js';
-// import { todoServices } from '../../backend/services/todo-services.js';
-
-// const data = async function renderData() {
-//   await todoServices.all();
-// };
-//
-// data().then();
-// const data = fetchData('GET');
-
-export const fetchData = async (method, body) => fetch('/notes/', {
-  method,
-  mode: 'cors',
-  cache: 'no-cache', //
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: body ? JSON.stringify(body) : undefined,
-}).then((res) => res.json()).then((result) => result).catch((err) => {
-  console.error('GET err', err);
-});
+import {init} from './init.js';
+import {ul,} from '../constants/elements.js';
+import {getDaysDueDate} from './getDaysDueDate.js';
+import {title,} from '../constants/form.js';
+import {getCompleted} from './filter.js';
+import {showImportance} from './layout.js';
 
 export const titleFocus = () => title.focus();
 

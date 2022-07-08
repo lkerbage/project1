@@ -2,10 +2,13 @@ import {
   completed, description, dueDate, importance, title,
 } from '../constants/form.js';
 import { selectorDisplayBottom, selectorDisplayTop, submitButton } from '../constants/elements.js';
-import { processItem } from '../services/process-item.js';
+import { processItem } from './process-item.js';
 import { displayParts } from './displayParts.js';
 import { Display } from '../constants/enums.js';
-import { displayData, fetchData } from './index.js';
+import { displayData } from './index.js';
+import {  fetchData} from '../services/fetch.js';
+
+
 
 const submitTodo = async (data) => {
   const note = {
@@ -26,7 +29,6 @@ const submitTodo = async (data) => {
   if (submitButton.className === 'js-edit-todo') {
     // erstens
     // davor Data manipulieren
-
     // dies in displayData
     await fetchData('PUT', note).then((res) => {
       data.map((item) => {

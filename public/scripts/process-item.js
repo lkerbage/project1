@@ -1,8 +1,8 @@
-import { displayData } from '../scripts/index.js';
-import { displayParts } from '../scripts/displayParts.js';
+import { displayData } from './index.js';
+import { displayParts } from './displayParts.js';
 import { Display } from '../constants/enums.js';
 import { selectorDisplayBottom, selectorDisplayTop, submitButton } from '../constants/elements.js';
-import { showUpdateItem } from '../scripts/showUpdateItem.js';
+import { showUpdateItem } from './showUpdateItem.js';
 
 const changeButton = () => {
   submitButton.innerHTML = 'Bearbeiten';
