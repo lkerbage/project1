@@ -2,11 +2,11 @@
   "name": "projekt1",
   "version": "1.0.0",
   "description": "project1",
-  "main": "./source/index.js",
+  "main": "backend/index.js",
   "type": "module",
   "scripts": {
     "test": "test",
-    "start": "node source/index.js"
+    "start": "node backend/index.js"
   },
   "author": "Laurent Kerbage",
   "license": "ISC",

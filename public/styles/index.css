@@ -1,0 +1,231 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --width50: 50%;
+  --width100: 100%;
+  --background-color: #fff;
+  --background-color-wrapper: azure;
+  --alternate-background-color: #f7f7f9;
+  --text-color: #121416d8;
+  --text-color-light: #777676bb;
+  --link-color: #543fd7;
+  --masthead-color: #543fd7;
+  --masthead-text: #fff;
+  --button-color: #263238;
+  --button-text: #fff;
+  --max-width: 1200px;
+}
+
+html[data-theme='light'] {
+  --background-color: #fff;
+  --background-color-wrapper: azure;
+  --text-color: #121416d8;
+  --link-color: #543fd7;
+}
+
+html[data-theme='dark'] {
+  --background-color-wrapper: #212a2e;
+  --background-color: #212a2e;
+  --text-color: #f7f8f8;
+  --link-color: #828fff;
+}
+
+[data-theme='light'] .d-block-light,
+[data-theme='dark'] .d-block-dark {
+  display: block !important;
+}
+
+body {
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 1rem;
+  font-family: Roboto, sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+  margin-top: 1rem;
+  max-width: var(--max-width);
+}
+
+.wrapper {
+  display: grid;
+  background: var(--background-color-wrapper);
+  box-shadow: 10px 20px 15px silver;
+  border-radius: 5px;
+  margin-bottom: 40px;
+}
+
+.wrapper > * {
+  padding: 1em;
+  display: grid;
+  gap: 1rem 1rem;
+}
+
+@media (min-width: 700px) {
+  .wrapper .center {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+  }
+}
+
+.item-container {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  grid-template-columns: 20% 60% 20%;
+  max-width: var(--max-width);
+  justify-content: center;
+}
+
+.item-box {
+  background-color: var(--background-color);
+  padding: 3%;
+  align-content: baseline;
+  justify-content: center;
+}
+
+.box {
+  background-color: var(--background-color);
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.item-container > .item-box {
+  border: grey 1px solid;
+}
+
+.todo-filter {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  max-width: var(--max-width);
+  border-radius: 5px;
+}
+
+h3,
+ul {
+  margin: 0;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid gold;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='date'],
+textarea,
+div > button {
+  width: var(--width100);
+  display: block;
+  border-radius: 5px;
+}
+
+li > button,
+span > button {
+  width: var(--width50);
+}
+
+select {
+  width: var(--width50);
+  color: grey;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.contacts {
+  background: #4b5195;
+  color: var(--text-color);
+}
+
+.form {
+  background: #fff;
+}
+
+input label {
+  display: block;
+}
+
+.full-width {
+  grid-column: 1 / 3;
+}
+
+button,
+input,
+select,
+textarea {
+  padding: 1em;
+}
+
+.done {
+  font-size: 25px;
+  color: forestgreen;
+}
+
+.open {
+  font-size: 25px;
+  color: red;
+}
+
+input > checkbox {
+  display: block;
+  justify-items: left;
+  width: var(--width50);
+}
+
+button {
+  background: lightgrey;
+  width: var(--width100);
+  border: 0;
+}
+
+button:hover,
+button:focus {
+  background: darkcyan;
+  outline: 0;
+}
+
+.completedButton:hover,
+.completedButton:focus {
+  background: orange;
+}
+
+.editButton:hover,
+.editButton:focus {
+  background: royalblue;
+}
+
+.alignCenter {
+  text-align: center;
+}
+
+.displayInline {
+  display: inline;
+}
+
+.center {
+  display: grid;
+  gap: 1rem 1rem;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1em;
+}
