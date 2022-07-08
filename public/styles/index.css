@@ -196,14 +196,14 @@ button {
   border: 0;
 }
 
-button:hover,
-button:focus {
+button:hover
+ {
   background: darkcyan;
   outline: 0;
 }
 
-.completedButton:hover,
-.completedButton:focus {
+.completedButton:hover
+ {
   background: orange;
 }
 
