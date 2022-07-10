@@ -8,8 +8,6 @@ import { Display } from '../constants/enums.js';
 import { displayData } from './index.js';
 import {  fetchData} from '../services/fetch.js';
 
-
-
 const submitTodo = async (data) => {
   const note = {
     title: title.value,
@@ -37,7 +35,6 @@ const submitTodo = async (data) => {
         }
         return item;
       });
-
       displayData(data);
     });
   }

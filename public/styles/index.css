@@ -87,10 +87,9 @@ body {
 }
 
 .item-box {
-  background-color: var(--background-color);
-  padding: 3%;
   align-content: baseline;
   justify-content: center;
+  vertical-align: center !important;
 }
 
 .box {
@@ -98,10 +97,6 @@ body {
   padding: 5%;
   display: flex;
   justify-content: center;
-}
-
-.item-container > .item-box {
-  border: grey 1px solid;
 }
 
 .todo-filter {
