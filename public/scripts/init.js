@@ -18,38 +18,38 @@ import {processItem} from './process-item.js';
 import {completedItems, filterItems} from './filter.js';
 import {displayParts} from './displayParts.js';
 import {displayData} from './index.js';
-import {  fetchData} from '../services/fetch.js';
+import {fetchData} from '../services/fetch.js';
 import {submit} from './submit.js';
 import {createNewTodo} from "./createNewTodo.js";
 import {overview as overviewFunction} from "./overview.js";
 
 
 export async function init() {
-  displayParts(selectorDisplayTop, Display.NONE);
-  displayParts(selectorDisplayBottom, Display.BLOCK);
-  setTheme();
-  const data = await fetchData('GET');
-  if (data.length > 0) {
-    await displayData(data);
-  } else {
-    todoFilters.style.display = Display.NONE;
-    ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
-  }
+    displayParts(selectorDisplayTop, Display.NONE);
+    displayParts(selectorDisplayBottom, Display.BLOCK);
+    setTheme();
+    const data = await fetchData('GET');
+    if (data.length > 0) {
+        await displayData(data);
+    } else {
+        todoFilters.style.display = Display.NONE;
+        ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
+    }
 
-  form.addEventListener('submit', (ev) => {
-    submit(ev);
-  });
-  form.addEventListener('click', validationText);
-  todoList.addEventListener('click', (ev) => {
-    processItem(ev, data);
-  });
-  todoFilter.addEventListener('change', (ev) => filterItems(ev, data));
-  showByStatus.addEventListener('change', (ev) => completedItems(ev, data));
-  createButton.addEventListener('click', () => {
-   createNewTodo()
-  });
-  overview.addEventListener('click', () => {
-    overviewFunction()
-  });
-  toggle.addEventListener('click', () => setTheme());
+    form.addEventListener('submit', (ev) => {
+        submit(ev);
+    });
+    form.addEventListener('click', validationText);
+    todoList.addEventListener('click', (ev) => {
+        processItem(ev, data);
+    });
+    todoFilter.addEventListener('change', (ev) => filterItems(ev, data));
+    showByStatus.addEventListener('change', (ev) => completedItems(ev, data));
+    createButton.addEventListener('click', () => {
+        createNewTodo()
+    });
+    overview.addEventListener('click', () => {
+        overviewFunction()
+    });
+    toggle.addEventListener('click', () => setTheme());
 }
