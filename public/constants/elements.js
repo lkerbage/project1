@@ -9,6 +9,4 @@ export const createButton = document.querySelector('.create-new-item');
 export const overview = document.querySelector('#overview');
 export const submitButton = document.querySelector('.create-button');
 export const todoFilters = document.querySelector('.todo-filter');
-export const div = document.querySelector('div');
-export const wrapper = document.querySelector('.wrapper');
 export const toggle = document.querySelector('#theme-switcher');
