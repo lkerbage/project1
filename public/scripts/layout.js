@@ -6,7 +6,7 @@ export const showImportance = (_importance) => {
     return flashes.join('')
 };
 
-export const getCompleted = (s) => {
+export const showCompleted = (s) => {
     if (s === 'y') {
         return '<ion-icon class="done" name="checkmark-circle-outline"></ion-icon>';
     }

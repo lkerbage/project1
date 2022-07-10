@@ -6,7 +6,7 @@ import {displayData} from "./index.js";
 
 const changeButton = () => {
     submitButton.innerHTML = 'Bearbeiten';
-    submitButton.classList.add('js-edit-todo');
+    submitButton.className = 'create-button js-edit-todo';
 };
 
 export const editItem = (data, id) => {

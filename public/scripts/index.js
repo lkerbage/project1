@@ -2,7 +2,7 @@ import {init} from './init.js';
 import {ul,} from '../constants/elements.js';
 import {getDaysDueDate} from './getDaysDueDate.js';
 import {title,} from '../constants/form.js';
-import {getCompleted, showImportance} from './layout.js';
+import {showCompleted, showImportance} from './layout.js';
 
 export const titleFocus = () => title.focus();
 
@@ -13,7 +13,7 @@ export const displayData = (currentData = []) => {
         <div class='item-container'>
           <div ><button class='editButton' data-id='${index}'><ion-icon name="create-outline"></ion-icon> Bearbeiten</button></div> 
           <div ><strong>${todo.title}</strong></div> 
-          <div >${todo.completed ? getCompleted('y') : getCompleted('n')}</div> 
+          <div >${todo.completed ? showCompleted('y') : showCompleted('n')}</div> 
        </div>   
         <div class='item-container'>
            <div class='item-box'>${getDaysDueDate(todo)}</div>

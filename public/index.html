@@ -3,17 +3,14 @@
 <head>
     <meta charset='UTF-8'/>
     <title>Todo App</title>
-    <link
-            href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
-            rel='stylesheet'
+    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+          rel='stylesheet'
     />
     <link href='styles/index.css' rel='stylesheet'/>
-    <script
-            src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'
+    <script src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'
             type='module'
     ></script>
-    <script
-            nomodule=''
+    <script nomodule=''
             src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js'
     ></script>
 </head>
@@ -22,7 +19,6 @@
 <header class='container'>
     <h1 class='alignCenter'>Laurents Todo Liste</h1>
     <button class='container' id='theme-switcher'>Theme Switcher</button>
-
 </header>
 
 <main>
@@ -32,7 +28,7 @@
             <div>
                 <label
                 >Titel
-                    <input autofocus id='title' name='title' required type='text'/>
+                    <input autofocus id='title' name='title' required type='text' value="hello"/>
                 </label>
             </div>
             <div>
@@ -45,13 +41,14 @@
                             name='importance'
                             required
                             type='number'
+                            value=2
                     />
                 </label>
             </div>
             <div>
                 <label
                 >Zu erledigen bis
-                    <input id='dueDate' name='dueDate' required type='date'/>
+                    <input id='dueDate' name='dueDate' required type='date' value="2022-08-08"/>
                 </label>
             </div>
             <div>
@@ -67,27 +64,22 @@
             </div>
             <label
             >Beschreibung
-                <textarea id='description' name='description'></textarea>
+                <textarea id='description' name='description'>Test</textarea>
             </label>
             <input id='timestamp' name='timestamp' type='hidden'/>
             <input id='_id' name='_id' type='hidden'/>
-
             <div>
                 <button class='create-button' id='create' name='create' type='submit'>Erstellen</button>
             </div>
-
             <div>
                 <button id='overview' type='button'>Übersicht</button>
             </div>
         </form>
-
     </div>
 
     <div class='js-todo-list display-bottom container'>
-        <button class="create-new-item" id="openCreate">
-            <ion-icon name="add-circle-outline" size="medium"></ion-icon>
-            Neues
-            Todo erstellen
+        <button class="create-new-item" id="openCreate"> <ion-icon name="add-circle-outline" size="medium"></ion-icon>
+            Neues Todo erstellen
         </button>
         <form class='todo-filter' method="get">
             <div class='box'>

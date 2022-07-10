@@ -9,5 +9,5 @@ export const createNewTodo = () => {
     titleFocus();
     form.reset();
     submitButton.innerHTML = 'Erstellen';
-    submitButton.classList.add('js-create-new-todo');
+    submitButton.className = 'create-button js-create-new-todo';
 };

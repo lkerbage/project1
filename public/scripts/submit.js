@@ -15,14 +15,15 @@ const submitTodo = async (data) => {
         description: description.value,
         timestamp: Date.now(),
     };
-    if (submitButton.className === 'js-create-new-todo') {
+    if (submitButton.className === 'create-button js-create-new-todo') {
+        console.log("create")
         await fetchData('POST', note).then((res) => {
             displayData([res, ...data]);
         });
 
         // await todoServices.add(note);
     }
-    if (submitButton.className === 'js-edit-todo') {
+    if (submitButton.className === 'create-button js-edit-todo') {
         // erstens
         // davor Data manipulieren
         // dies in displayData
