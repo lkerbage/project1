@@ -12,7 +12,7 @@ export const displayData = (currentData = []) => {
         .map((todo, index) =>
             `<li class='wrapper alignCenter ' data-id='${index}' >
         <div class='item-container'>
-          <div ><button class='editButton' data-id='${index}'>Bearbeiten</button></div> 
+          <div ><button class='editButton' data-id='${index}'><ion-icon name="create-outline"></ion-icon> Bearbeiten</button></div> 
           <div ><strong>${todo.title}</strong></div> 
           <div >${todo.completed ? getCompleted('y') : getCompleted('n')}</div> 
        </div>   

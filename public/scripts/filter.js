@@ -1,4 +1,5 @@
 import {displayData} from './index.js';
+import {ul} from "../constants/elements.js";
 
 export const filterItems = (ev, data) => {
     const filterCriteria = ev.target.value;
@@ -27,5 +28,11 @@ export const getCompleted = (s) => {
 export const completedItems = (ev, data) => {
     const filterCriteria = ev.target.value;
     const filterData = data.filter((todo) => (filterCriteria !== 'a' ? todo.completed === Number(filterCriteria) : todo));
-    displayData(filterData);
+    if (filterData.length > 0) {
+        displayData(filterData);
+    } else {
+        ul.innerHTML = "<h2 class='alignCenter'>Es sind keine Daten vorhanden</h2>"
+
+    }
+
 };

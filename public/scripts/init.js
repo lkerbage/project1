@@ -1,15 +1,15 @@
 import {
-  createButton,
-  form,
-  overview,
-  selectorDisplayBottom,
-  selectorDisplayTop,
-  showByStatus,
-  todoFilter,
-  todoFilters,
-  todoList,
-  toggle,
-  ul,
+    createButton,
+    form,
+    overview,
+    selectorDisplayBottom,
+    selectorDisplayTop,
+    showByStatus,
+    todoFilter,
+    todoFilters,
+    todoList,
+    toggle,
+    ul,
 } from '../constants/elements.js';
 import {Display} from '../constants/enums.js';
 import {setTheme} from './theme.js';
