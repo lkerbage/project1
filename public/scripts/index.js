@@ -2,7 +2,7 @@ import {init} from './init.js';
 import {ul,} from '../constants/elements.js';
 import {getDaysDueDate} from './getDaysDueDate.js';
 import {title,} from '../constants/form.js';
-import {showImportance, getCompleted} from './layout.js';
+import {getCompleted, showImportance} from './layout.js';
 
 export const titleFocus = () => title.focus();
 
