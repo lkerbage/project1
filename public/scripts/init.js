@@ -8,11 +8,11 @@ import {
     todoFilter,
     todoFilters,
     todoList,
-    toggle,
+    themeSwitcher,
     ul,
 } from '../constants/elements.js';
 import {Display} from '../constants/enums.js';
-import {setTheme} from './theme.js';
+import {setTheme, toggleTheme} from './theme.js';
 import {validationText} from './validationText.js';
 import {processItem} from './process-item.js';
 import {filterItems} from './filter.js';
@@ -51,5 +51,7 @@ export async function init() {
     overview.addEventListener('click', () => {
         overviewFunction()
     });
-    toggle.addEventListener('click', () => setTheme());
+    themeSwitcher.addEventListener('click', () => {
+        setTheme();toggleTheme()
+    });
 }

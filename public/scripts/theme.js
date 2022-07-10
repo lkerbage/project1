@@ -1,4 +1,3 @@
-import {toggle} from '../constants/elements.js';
 import {Theme} from '../constants/enums.js';
 
 export const setTheme = () => {
@@ -8,14 +7,15 @@ export const setTheme = () => {
     }
     else {localStorage.setItem('theme', Theme.LIGHT);}
 
-    toggle.onclick = () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        let targetTheme = Theme.LIGHT;
+};
 
-        if (currentTheme === Theme.LIGHT) {
-            targetTheme = Theme.DARK;
-        }
-        document.documentElement.setAttribute('data-theme', targetTheme);
-        localStorage.setItem('theme', targetTheme);
-    };
+export const toggleTheme = () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    let targetTheme = Theme.LIGHT;
+
+    if (currentTheme === Theme.LIGHT) {
+        targetTheme = Theme.DARK;
+    }
+    document.documentElement.setAttribute('data-theme', targetTheme);
+    localStorage.setItem('theme', targetTheme);
 };

@@ -16,7 +16,7 @@ const submitTodo = async (data) => {
         timestamp: Date.now(),
     };
     if (submitButton.className === 'create-button js-create-new-todo') {
-        console.log("create")
+
         await fetchData('POST', note).then((res) => {
             displayData([res, ...data]);
         });
