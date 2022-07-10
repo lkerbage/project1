@@ -6,7 +6,8 @@ import {Display} from '../constants/enums.js';
 import {displayData} from './index.js';
 import {fetchData} from '../services/fetch.js';
 
-const submitTodo = async (data) => {
+const submitTodo = async () => {
+    const data = await fetchData('GET');
     const note = {
         title: title.value,
         importance: importance.value,

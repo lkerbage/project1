@@ -5,10 +5,10 @@ import {
     selectorDisplayBottom,
     selectorDisplayTop,
     showByStatus,
+    themeSwitcher,
     todoFilter,
     todoFilters,
     todoList,
-    themeSwitcher,
     ul,
 } from '../constants/elements.js';
 import {Display} from '../constants/enums.js';
@@ -37,7 +37,8 @@ export async function init() {
     }
 
     form.addEventListener('submit', async (ev) => {
-       await submit(ev, data);
+
+        await submit(ev);
     });
     form.addEventListener('click', validationText);
     todoList.addEventListener('click', (ev) => {
@@ -52,6 +53,7 @@ export async function init() {
         overviewFunction()
     });
     themeSwitcher.addEventListener('click', () => {
-        setTheme();toggleTheme()
+        setTheme();
+        toggleTheme()
     });
 }
