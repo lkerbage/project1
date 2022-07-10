@@ -2,8 +2,7 @@ import {init} from './init.js';
 import {ul,} from '../constants/elements.js';
 import {getDaysDueDate} from './getDaysDueDate.js';
 import {title,} from '../constants/form.js';
-import {getCompleted} from './filter.js';
-import {showImportance} from './layout.js';
+import {showImportance, getCompleted} from './layout.js';
 
 export const titleFocus = () => title.focus();
 

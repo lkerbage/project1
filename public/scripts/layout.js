@@ -5,3 +5,10 @@ export const showImportance = (_importance) => {
     }
     return flashes.join('')
 };
+
+export const getCompleted = (s) => {
+    if (s === 'y') {
+        return '<ion-icon class="done" name="checkmark-circle-outline"></ion-icon>';
+    }
+    return '<ion-icon class="open" name="alert-outline"></ion-icon>';
+};

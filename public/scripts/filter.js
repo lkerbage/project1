@@ -1,35 +1,24 @@
 import {displayData} from './index.js';
 import {ul} from "../constants/elements.js";
+import {filter, statusFilter} from "../constants/form.js";
 
-export const filterItems = (ev, data) => {
-    const filterCriteria = ev.target.value;
+export const filterItems = (ev, filterData) => {
+    const currentFilter = filter.value;
+    const currentStatusFilter = statusFilter.value;
 
-    const filterData = data.sort((a, b) => {
-        if (a[filterCriteria] < b[filterCriteria]) {
+    let combinedFilter = filterData.sort((a, b) => {
+        if (a[currentFilter] < b[currentFilter]) {
             return -1;
         }
-        if (a[filterCriteria] > b[filterCriteria]) {
+        if (a[currentFilter] > b[currentFilter]) {
             return 1;
         }
         return 0;
     });
-    displayData(
-        filterCriteria === 'importance' ? filterData.reverse() : filterData,
-    );
-};
+    let data = combinedFilter.filter((todo) => (currentStatusFilter !== 'a' ? todo.completed === Number(currentStatusFilter) : todo));
 
-export const getCompleted = (s) => {
-    if (s === 'y') {
-        return '<ion-icon class="done" name="checkmark-circle-outline"></ion-icon>';
-    }
-    return '<ion-icon class="open" name="alert-outline"></ion-icon>';
-};
-
-export const completedItems = (ev, data) => {
-    const filterCriteria = ev.target.value;
-    const filterData = data.filter((todo) => (filterCriteria !== 'a' ? todo.completed === Number(filterCriteria) : todo));
-    if (filterData.length > 0) {
-        displayData(filterData);
+    if (data.length > 0) {
+        displayData(data);
     } else {
         ul.innerHTML = "<h2 class='alignCenter'>Es sind keine Daten vorhanden</h2>"
 

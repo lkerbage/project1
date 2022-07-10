@@ -89,9 +89,9 @@
             Neues
             Todo erstellen
         </button>
-        <div class='todo-filter'>
+        <form class='todo-filter' method="get">
             <div class='box'>
-                <select class='filter'>
+                <select class='filter' id="filter" name="filter">
                     <option selected value=''>Filtern nach ...</option>
                     <option value='title'>Titel</option>
                     <option value='importance'>Dringlichkeit</option>
@@ -100,13 +100,13 @@
                 </select>
             </div>
             <div class='box'>
-                <select class='show-by-status'>
+                <select class='show-by-status' id="statusFilter" name="statusFilter">
                     <option selected value='a'>Alle Todos anzeigen</option>
                     <option value='0'>offene Todos anzeigen</option>
                     <option value='1'>erledigte Todos anzeigen</option>
                 </select>
             </div>
-        </div>
+        </form>
         <p/>
         <ul></ul>
     </div>

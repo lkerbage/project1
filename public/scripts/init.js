@@ -15,7 +15,7 @@ import {Display} from '../constants/enums.js';
 import {setTheme} from './theme.js';
 import {validationText} from './validationText.js';
 import {processItem} from './process-item.js';
-import {completedItems, filterItems} from './filter.js';
+import {filterItems} from './filter.js';
 import {displayParts} from './displayParts.js';
 import {displayData} from './index.js';
 import {fetchData} from '../services/fetch.js';
@@ -44,7 +44,7 @@ export async function init() {
         processItem(ev, data);
     });
     todoFilter.addEventListener('change', (ev) => filterItems(ev, data));
-    showByStatus.addEventListener('change', (ev) => completedItems(ev, data));
+    showByStatus.addEventListener('change', (ev) => filterItems(ev, data));
     createButton.addEventListener('click', () => {
         createNewTodo()
     });
