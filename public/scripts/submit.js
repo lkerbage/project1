@@ -18,15 +18,11 @@ const submitTodo = async (data) => {
     if (submitButton.className === 'create-button js-create-new-todo') {
 
         await fetchData('POST', note).then((res) => {
-            displayData([res, ...data]);
+            console.log("data in submitTodo: ", data)
+            displayData([...data, {...res}]);
         });
-
-        // await todoServices.add(note);
     }
     if (submitButton.className === 'create-button js-edit-todo') {
-        // erstens
-        // davor Data manipulieren
-        // dies in displayData
         await fetchData('PUT', note).then((res) => {
             data.map((item) => {
                 if (item._id === res._id) {
@@ -34,14 +30,14 @@ const submitTodo = async (data) => {
                 }
                 return item;
             });
-            displayData(data);
+            displayData([...data, {...res}]);
         });
     }
 };
 
 export const submit = async (ev, data) => {
     ev.preventDefault();
-    await submitTodo(ev, data);
+    await submitTodo(data);
     processItem(ev, data);
     displayParts(selectorDisplayTop, Display.NONE);
     displayParts(selectorDisplayBottom, Display.BLOCK);

@@ -7,7 +7,7 @@ class TodoController {
                 res.json(await store.all());
                 console.log(await store.all());
             } catch (err) {
-                res.status(500).json('DB failure when retrieving notes (get)');
+                return err;
             }
         };
 

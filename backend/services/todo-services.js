@@ -1,7 +1,6 @@
 import {httpService} from './http-service.js';
 
 class TodoServices {
-    // todo ev. spread
     async add(newTodo) {
         return httpService.ajax('POST', '/notes/', {name: {...newTodo}});
     }
@@ -11,7 +10,9 @@ class TodoServices {
     }
 
     async update(note) {
-        return await this._db.update({_id: note._id}, note, {returnUpdatedDocs: true});
+        // return await this._db.update({_id: note._id}, note, {returnUpdatedDocs: true});
+        return httpService.ajax('PUT', '/notes/', {name: {...note}});
+
     }
 }
 

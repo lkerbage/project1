@@ -1,7 +1,7 @@
 export const fetchData = async (method, body) => fetch('/notes/', {
     method,
     mode: 'cors',
-    cache: 'no-cache', //
+    cache: 'no-cache',
     headers: {
         'Content-Type': 'application/json',
     },

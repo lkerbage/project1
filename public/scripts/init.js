@@ -36,8 +36,8 @@ export async function init() {
         ul.innerHTML = '<h2 class="alignCenter">Du bist frei 😀 Es gibt heute nichts zu machen!</h2>';
     }
 
-    form.addEventListener('submit', (ev) => {
-        submit(ev);
+    form.addEventListener('submit', async (ev) => {
+       await submit(ev, data);
     });
     form.addEventListener('click', validationText);
     todoList.addEventListener('click', (ev) => {
