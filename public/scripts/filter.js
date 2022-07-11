@@ -3,8 +3,7 @@ import {ul} from "../constants/elements.js";
 import {sort, statusFilter} from "../constants/form.js";
 import {currentData} from "./store.js";
 
-export const filterItems = (ev, filterData) => {
-    console.log("ev", ev, "currentData", currentData)
+export const filterItems = () => {
     const currentFilter = sort.value;
     const currentStatusFilter = statusFilter.value;
 

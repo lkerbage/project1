@@ -1,13 +1,14 @@
 import {editItem} from "./editItem.js";
 import {showItemsByStatus} from "./showItemsByStatus.js";
+import {currentData} from "./store.js";
 
 
-export const processItem = (ev, data) => {
+export const processItem = (ev) => {
     const {id} = ev.target.dataset;
     if (ev.target.className === 'showByStatus') {
-        showItemsByStatus(data)
+        showItemsByStatus(currentData)
     }
     if (ev.target.className === 'editButton') {
-        editItem(data, id)
+        editItem(currentData, id)
     }
 };

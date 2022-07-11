@@ -31,13 +31,10 @@ const submitTodo = async () => {
     }
 };
 
-//todo delete
-//data.filter(d => d._id !== _id.value)
-
-export const submit = async (ev, data) => {
+export const submit = async (ev) => {
     ev.preventDefault();
-    await submitTodo(data);
-    processItem(ev, data);
+    await submitTodo(currentData);
+    processItem(ev);
     displayParts(selectorDisplayTop, Display.NONE);
     displayParts(selectorDisplayBottom, Display.BLOCK);
 };

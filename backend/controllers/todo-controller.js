@@ -5,7 +5,6 @@ class TodoController {
         this.getNotes = async (req, res) => {
             try {
                 res.json(await store.all());
-                console.log(await store.all());
             } catch (err) {
                 return err;
             }

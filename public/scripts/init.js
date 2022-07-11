@@ -43,10 +43,10 @@ export async function init() {
     });
     form.addEventListener('click', validationText);
     todoList.addEventListener('click', (ev) => {
-        processItem(ev, data);
+        processItem(ev);
     });
-    todoFilter.addEventListener('change', (ev) => filterItems(ev, data));
-    showByStatus.addEventListener('change', (ev) => filterItems(ev, data));
+    todoFilter.addEventListener('change', (ev) => filterItems());
+    showByStatus.addEventListener('change', (ev) => filterItems());
     createButton.addEventListener('click', () => {
         createNewTodo()
     });
