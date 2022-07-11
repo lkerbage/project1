@@ -16,6 +16,7 @@ export const filterItems = () => {
         }
         return 0;
     });
+    if(currentFilter === "importance"){combinedFilter.reverse()}
     let data = combinedFilter.filter((todo) => (currentStatusFilter !== 'a' ? todo.completed === Number(currentStatusFilter) : todo));
 
     if (data.length > 0) {
