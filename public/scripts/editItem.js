@@ -10,6 +10,7 @@ const changeButton = () => {
 };
 
 export const editItem = (data, id) => {
+    console.log(data)
     showUpdateItem(data[id]);
     displayParts(selectorDisplayTop, Display.BLOCK);
     displayParts(selectorDisplayBottom, Display.NONE);

@@ -1,12 +1,14 @@
 import {displayData} from './index.js';
 import {ul} from "../constants/elements.js";
-import {filter, statusFilter} from "../constants/form.js";
+import {sort, statusFilter} from "../constants/form.js";
+import {currentData} from "./store.js";
 
 export const filterItems = (ev, filterData) => {
-    const currentFilter = filter.value;
+    console.log("ev", ev, "currentData", currentData)
+    const currentFilter = sort.value;
     const currentStatusFilter = statusFilter.value;
 
-    let combinedFilter = filterData.sort((a, b) => {
+    let combinedFilter = currentData.sort((a, b) => {
         if (a[currentFilter] < b[currentFilter]) {
             return -1;
         }

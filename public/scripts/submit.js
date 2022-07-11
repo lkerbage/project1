@@ -5,9 +5,9 @@ import {displayParts} from './displayParts.js';
 import {Display} from '../constants/enums.js';
 import {displayData} from './index.js';
 import {fetchData} from '../services/fetch.js';
+import {currentData, store} from "./store.js";
 
 const submitTodo = async () => {
-    const data = await fetchData('GET');
     const note = {
         title: title.value,
         importance: importance.value,
@@ -16,25 +16,23 @@ const submitTodo = async () => {
         description: description.value,
         timestamp: Date.now(),
     };
-    if (submitButton.className === 'create-button js-create-new-todo') {
 
-        await fetchData('POST', note).then((res) => {
-            console.log("data in submitTodo: ", data)
-            displayData([...data, {...res}]);
-        });
+    if (submitButton.className === 'create-button js-create-new-todo') {
+        const res = await fetchData('POST', note)
+       store([...currentData, res])
+        displayData(currentData);
+
     }
+
     if (submitButton.className === 'create-button js-edit-todo') {
-        await fetchData('PUT', note).then((res) => {
-            data.map((item) => {
-                if (item._id === res._id) {
-                    return res;
-                }
-                return item;
-            });
-            displayData([...data, {...res}]);
-        });
+        const res = await fetchData('PUT', {...note, _id: _id.value})
+        store(currentData.map(d => d._id === _id.value ? res : d))
+        displayData(currentData);
     }
 };
+
+//todo delete
+//data.filter(d => d._id !== _id.value)
 
 export const submit = async (ev, data) => {
     ev.preventDefault();

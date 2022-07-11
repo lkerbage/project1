@@ -8,4 +8,4 @@ export const {description} = form.elements;
 export const {_id} = form.elements;
 
 export const {statusFilter} = todoFilters.elements
-export const {filter} = todoFilters.elements
+export const {filter: sort} = todoFilters.elements

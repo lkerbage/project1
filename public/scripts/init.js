@@ -22,6 +22,7 @@ import {fetchData} from '../services/fetch.js';
 import {submit} from './submit.js';
 import {createNewTodo} from "./createNewTodo.js";
 import {overview as overviewFunction} from "./overview.js";
+import {currentData} from "./store.js";
 
 
 export async function init() {
@@ -29,6 +30,7 @@ export async function init() {
     displayParts(selectorDisplayBottom, Display.BLOCK);
     setTheme();
     const data = await fetchData('GET');
+     currentData.push(...data);
     if (data.length > 0) {
         await displayData(data);
     } else {
@@ -37,7 +39,6 @@ export async function init() {
     }
 
     form.addEventListener('submit', async (ev) => {
-
         await submit(ev);
     });
     form.addEventListener('click', validationText);

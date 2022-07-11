@@ -31,7 +31,7 @@ html[data-theme='dark'] {
 
 [data-theme='light'] .d-block-light,
 [data-theme='dark'] .d-block-dark {
-    display: block !important;
+    display: block;
 }
 
 body {
@@ -86,7 +86,7 @@ body {
 .item-box {
     align-content: baseline;
     justify-content: center;
-    vertical-align: center !important;
+    vertical-align: center;
 }
 
 .box {
