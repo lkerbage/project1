@@ -10,8 +10,9 @@ export const showUpdateItem = (item) => {
     formIds.forEach((name) => {
         const formElementsName = form.elements[name];
         if (formElementsName) form.elements[name].value = item[name];
-        if (formElementsName.id === 'completed' && formElementsName == 1) {
+        if (formElementsName.id === 'completed' && formElementsName.value == 1) {
             formElementsName.setAttribute('checked', 'checked');
-        } else {formElementsName.removeAttr("checked")}
+        } else {
+            formElementsName.removeAttribute("checked")}
     });
 };
