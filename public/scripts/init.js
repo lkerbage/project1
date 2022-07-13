@@ -22,7 +22,7 @@ import { fetchData } from '../services/fetch.js';
 import { submit } from './submit.js';
 import { createNewTodo } from './createNewTodo.js';
 import { overview as overviewFunction } from './overview.js';
-import { currentData } from './store.js';
+import { currentData } from './presentData.js';
 
 
 export async function init() {

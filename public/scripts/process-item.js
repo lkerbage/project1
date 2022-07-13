@@ -1,6 +1,6 @@
 import { editItem } from './editItem.js';
 import { showItemsByStatus } from './showItemsByStatus.js';
-import { currentData } from './store.js';
+import { currentData } from './presentData.js';
 
 
 export const processItem = (ev) => {

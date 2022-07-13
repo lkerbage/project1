@@ -1,7 +1,7 @@
 import { displayData } from './index.js';
 import { ul } from '../constants/elements.js';
 import { sort, statusFilter } from '../constants/form.js';
-import { currentData } from './store.js';
+import { currentData } from './presentData.js';
 
 export const filterItems = () => {
   const currentFilter = sort.value;

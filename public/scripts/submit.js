@@ -5,7 +5,7 @@ import { displayParts } from './displayParts.js';
 import { Display } from '../constants/enums.js';
 import { displayData } from './index.js';
 import { fetchData } from '../services/fetch.js';
-import { currentData, store } from './store.js';
+import { currentData, presentData } from './presentData.js';
 
 const submitTodo = async () => {
   const note = {
@@ -15,18 +15,19 @@ const submitTodo = async () => {
     completed: Number(completed.checked),
     description: description.value,
     timestamp: Date.now(),
+    _id: _id.value
   };
 
   if (submitButton.className === 'create-button js-create-new-todo') {
     const res = await fetchData('POST', note);
-    store([...currentData, res]);
+    presentData([...currentData, res]);
     displayData(currentData);
 
   }
 
   if (submitButton.className === 'create-button js-edit-todo') {
     const res = await fetchData('PUT', { ...note, _id: _id.value });
-    store(currentData.map(d => d._id === _id.value ? res : d));
+    presentData(currentData.map(d => d._id === _id.value ? res : d));
     displayData(currentData);
   }
 };

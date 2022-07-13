@@ -1,4 +1,4 @@
 export let currentData = [];
-export const store = (data) => {
+export const presentData = (data) => {
   currentData = [...data];
 };
