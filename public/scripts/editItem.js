@@ -10,7 +10,8 @@ const changeButton = () => {
 };
 
 export const editItem = (data, id) => {
-  showUpdateItem(data[id]);
+  const item = data.filter((item) => item._id === id);
+  showUpdateItem(item);
   displayParts(selectorDisplayTop, Display.BLOCK);
   displayParts(selectorDisplayBottom, Display.NONE);
   changeButton();

@@ -14,7 +14,7 @@ import {
 import { Display } from '../constants/enums.js';
 import { setTheme, toggleTheme } from './theme.js';
 import { validationText } from './validationText.js';
-import { processItem } from './process-item.js';
+import { processItem } from './processItem.js';
 import { filterItems } from './filter.js';
 import { displayParts } from './displayParts.js';
 import { displayData } from './index.js';
@@ -39,7 +39,7 @@ export async function init() {
   }
 
   form.addEventListener('submit', async (ev) => {
-    await submit(ev);
+    await submit(ev, data);
   });
   form.addEventListener('click', validationText);
   todoList.addEventListener('click', (ev) => {

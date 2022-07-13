@@ -6,10 +6,11 @@ export const showUpdateItem = (item) => {
   displayParts(selectorDisplayBottom, Display.NONE);
   displayParts(selectorDisplayTop, Display.BLOCK);
 
-  const formIds = Object.keys(item);
-  formIds.forEach((name) => {
+  const itemToChange = item[0]
+  const formKeys = Object.keys(itemToChange);
+  formKeys.forEach((name) => {
     const formElementsName = form.elements[name];
-    if (formElementsName) form.elements[name].value = item[name];
+    if (formElementsName) form.elements[name].value = itemToChange[name];
     if (formElementsName.id === 'completed' && formElementsName.value == 1) {
       formElementsName.setAttribute('checked', 'checked');
     } else {

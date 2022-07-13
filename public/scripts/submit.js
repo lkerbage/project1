@@ -1,6 +1,6 @@
 import { completed, description, dueDate, importance, title } from '../constants/form.js';
 import { selectorDisplayBottom, selectorDisplayTop, submitButton } from '../constants/elements.js';
-import { processItem } from './process-item.js';
+import { processItem } from './processItem.js';
 import { displayParts } from './displayParts.js';
 import { Display } from '../constants/enums.js';
 import { displayData } from './index.js';
@@ -15,19 +15,19 @@ const submitTodo = async () => {
     completed: Number(completed.checked),
     description: description.value,
     timestamp: Date.now(),
-    _id: _id.value
   };
 
+  //todo classnames --> className
   if (submitButton.className === 'create-button js-create-new-todo') {
     const res = await fetchData('POST', note);
     presentData([...currentData, res]);
     displayData(currentData);
 
   }
-
+  //todo classnames --> className
   if (submitButton.className === 'create-button js-edit-todo') {
     const res = await fetchData('PUT', { ...note, _id: _id.value });
-    presentData(currentData.map(d => d._id === _id.value ? res : d));
+    presentData(currentData.map(item => item._id === _id.value ? res : item));
     displayData(currentData);
   }
 };
