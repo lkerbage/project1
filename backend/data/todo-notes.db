@@ -1,23 +1,6 @@
-{"title":"hello1","importance":"2","dueDate":"2022-08-01","completed":0,"description":"Test","timestamp":1657568853064,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello1 edited","importance":"2","dueDate":"2022-08-01","completed":0,"description":"Test","timestamp":1657568867240,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello2","importance":"1","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657568877736,"_id":"5v6uaZuGPEJS9oF0"}
-{"title":"hello3","importance":"3","dueDate":"2022-08-10","completed":0,"description":"Test","timestamp":1657568979490,"_id":"2zw3YBFPobaK9d43"}
-{"title":"hello1 edited 2","importance":"2","dueDate":"2022-08-01","completed":0,"description":"Test","timestamp":1657569027971,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello4","importance":"2","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657569061002,"_id":"HPSiEvkotWN1VbZP"}
-{"title":"hello2","importance":"1","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657569080026,"_id":"5v6uaZuGPEJS9oF0"}
-{"title":"hello1 edited 2 check","importance":"2","dueDate":"2022-08-01","completed":1,"description":"Test","timestamp":1657569407004,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello3","importance":"3","dueDate":"2022-08-10","completed":1,"description":"Test edited","timestamp":1657569498749,"_id":"2zw3YBFPobaK9d43"}
-{"title":"hello1 edited 2 check","importance":"2","dueDate":"2022-08-01","completed":1,"description":"Test","timestamp":1657569520885,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello4","importance":"2","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657569523973,"_id":"HPSiEvkotWN1VbZP"}
-{"title":"hello2","importance":"1","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657569526004,"_id":"5v6uaZuGPEJS9oF0"}
-{"title":"hello3","importance":"3","dueDate":"2022-08-10","completed":1,"description":"Test edited","timestamp":1657569531645,"_id":"2zw3YBFPobaK9d43"}
-{"title":"hello2","importance":"1","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657569537564,"_id":"5v6uaZuGPEJS9oF0"}
-{"title":"hello4","importance":"2","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657569602189,"_id":"HPSiEvkotWN1VbZP"}
-{"title":"hello1 edited 2 check","importance":"2","dueDate":"2022-08-01","completed":1,"description":"Test","timestamp":1657569711949,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello4","importance":"2","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657569756973,"_id":"HPSiEvkotWN1VbZP"}
-{"title":"hello4","importance":"2","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657569761012,"_id":"HPSiEvkotWN1VbZP"}
-{"title":"hello1 edited 2 check","importance":"2","dueDate":"2022-08-01","completed":0,"description":"Test","timestamp":1657569765269,"_id":"wz2BC9SYft13kd4f"}
-{"title":"hello2","importance":"1","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657569776461,"_id":"5v6uaZuGPEJS9oF0"}
-{"title":"hello2","importance":"1","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657569781172,"_id":"5v6uaZuGPEJS9oF0"}
-{"title":"hello5","importance":"2","dueDate":"2022-08-28","completed":0,"description":"Test","timestamp":1657570292933,"_id":"1V0VEoMzdll6Wunn"}
-{"title":"hello2 edited","importance":"1","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657570674334,"_id":"5v6uaZuGPEJS9oF0"}
+{"title":"hello5","importance":"2","dueDate":"2022-08-28","completed":0,"description":"Test","timestamp":1657572366067,"_id":"1V0VEoMzdll6Wunn"}
+{"title":"1","importance":"2","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657716286717,"_id":"rP9auMA1jkWHUMyJ"}
+{"title":"2","importance":"2","dueDate":"2022-08-08","completed":0,"description":"Test","timestamp":1657716316253,"_id":"MPvCvwF3GrUpkqO4"}
+{"title":"2","importance":"2","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657716330093,"_id":"MPvCvwF3GrUpkqO4"}
+{"title":"3","importance":"2","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657716589469,"_id":"MPvCvwF3GrUpkqO4"}
+{"title":"3","importance":"2","dueDate":"2022-08-08","completed":1,"description":"Test","timestamp":1657716614886,"_id":"MPvCvwF3GrUpkqO4"}

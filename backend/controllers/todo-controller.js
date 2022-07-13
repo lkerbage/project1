@@ -13,7 +13,6 @@ class TodoController {
         this.addNote = async (req, res, next) => {
             try {
                 res.json(await store.add(req.body));
-                res.send(req.body);
             } catch (err) {
                 return next(err);
             }
