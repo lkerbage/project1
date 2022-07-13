@@ -7,6 +7,6 @@ export const todoFilter = document.querySelector('.filter');
 export const showByStatus = document.querySelector('.show-by-status');
 export const createButton = document.querySelector('.create-new-item');
 export const overview = document.querySelector('#overview');
-export const submitButton = document.querySelector('.create-button');
+export const submitButton = document.querySelector('.js-create-button');
 export const todoFilters = document.querySelector('.todo-filter');
 export const themeSwitcher = document.querySelector('#theme-switcher');

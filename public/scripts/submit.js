@@ -17,15 +17,12 @@ const submitTodo = async () => {
     timestamp: Date.now(),
   };
 
-  //todo classnames --> className
-  if (submitButton.className === 'create-button js-create-new-todo') {
+  if (submitButton.className === 'js-create-button js-create-new-todo') {
     const res = await fetchData('POST', note);
     presentData([...currentData, res]);
     displayData(currentData);
-
   }
-  //todo classnames --> className
-  if (submitButton.className === 'create-button js-edit-todo') {
+  if (submitButton.className === 'js-create-button js-edit-todo') {
     const res = await fetchData('PUT', { ...note, _id: _id.value });
     presentData(currentData.map(item => item._id === _id.value ? res : item));
     displayData(currentData);
