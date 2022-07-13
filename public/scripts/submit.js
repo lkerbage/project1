@@ -19,7 +19,7 @@ const submitTodo = async () => {
 
   if (submitButton.className === 'js-create-button js-create-new-todo') {
     const res = await fetchData('POST', note);
-    displayParts(todoFilters, Display.GRID)
+    displayParts(todoFilters, Display.GRID);
     presentData([...currentData, res]);
     displayData(currentData);
   }
