@@ -7,6 +7,7 @@ export const ErrorMessages = {
 export const Display = {
   BLOCK: 'block',
   NONE: 'none',
+  GRID: 'grid',
 };
 
 export const Theme = {

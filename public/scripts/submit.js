@@ -1,5 +1,5 @@
 import { completed, description, dueDate, importance, title } from '../constants/form.js';
-import { selectorDisplayBottom, selectorDisplayTop, submitButton } from '../constants/elements.js';
+import { selectorDisplayBottom, selectorDisplayTop, submitButton, todoFilters } from '../constants/elements.js';
 import { processItem } from './processItem.js';
 import { displayParts } from './displayParts.js';
 import { Display } from '../constants/enums.js';
@@ -19,6 +19,7 @@ const submitTodo = async () => {
 
   if (submitButton.className === 'js-create-button js-create-new-todo') {
     const res = await fetchData('POST', note);
+    displayParts(todoFilters, Display.GRID)
     presentData([...currentData, res]);
     displayData(currentData);
   }

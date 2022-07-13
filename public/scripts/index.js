@@ -7,6 +7,7 @@ import { showCompleted, showImportance } from './layout.js';
 export const titleFocus = () => title.focus();
 
 export const displayData = (currentData = []) => {
+
   ul.innerHTML = currentData
     .map((todo, index) =>
       `<li class='wrapper alignCenter ' data-id='${index}' >
