@@ -1,3 +1,3 @@
 export const displayParts = (nameOfClass, display) => {
-    nameOfClass.style.display = display;
+  nameOfClass.style.display = display;
 };

@@ -1,112 +1,113 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-    <meta charset='UTF-8'/>
-    <title>Todo App</title>
-    <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
-          rel='stylesheet'
-    />
-    <link href='styles/index.css' rel='stylesheet'/>
-    <script src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'
-            type='module'
-    ></script>
-    <script nomodule=''
-            src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js'
-    ></script>
+  <meta charset='UTF-8' />
+  <title>Todo App</title>
+  <link href='https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap'
+        rel='stylesheet'
+  />
+  <link href='styles/index.css' rel='stylesheet' />
+  <script src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.esm.js'
+          type='module'
+  ></script>
+  <script nomodule=''
+          src='https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js'
+  ></script>
 </head>
 
 <body>
 <header class='container'>
-    <h1 class='alignCenter'>Laurents Todo Liste</h1>
-    <button class='container' id='theme-switcher'>Theme Switcher</button>
+  <h1 class='alignCenter'>Laurents Todo Liste</h1>
+  <button class='container' id='theme-switcher'>Theme Switcher</button>
 </header>
 
 <main>
-    <div class='container wrapper display-top'>
+  <div class='container wrapper display-top'>
 
-        <form class='myForm' id='form' method='get'>
-            <div>
-                <label
-                >Titel
-                    <input autofocus id='title' name='title' required type='text' value="hello"/>
-                </label>
-            </div>
-            <div>
-                <label
-                >Dringlichkeit
-                    <input
-                            id='importance'
-                            max='3'
-                            min='0'
-                            name='importance'
-                            required
-                            type='number'
-                            value=2
-                    />
-                </label>
-            </div>
-            <div>
-                <label
-                >Zu erledigen bis
-                    <input id='dueDate' name='dueDate' required type='date' value="2022-08-08"/>
-                </label>
-            </div>
-            <div>
-                <label class='checkbox'>
-                    erledigt
-                    <input
-                            id='completed'
-                            name='completed'
-                            type='checkbox'
-                            value='1'
-                    />
-                </label>
-            </div>
-            <label
-            >Beschreibung
-                <textarea id='description' name='description'>Test</textarea>
-            </label>
-            <input id='timestamp' name='timestamp' type='hidden'/>
-            <input id='_id' name='_id' type='hidden'/>
-            <div>
-                <button class='create-button' id='create' name='create' type='submit'>Erstellen</button>
-            </div>
-            <div>
-                <button id='overview' type='button'>Übersicht</button>
-            </div>
-        </form>
-    </div>
+    <form class='myForm' id='form' method='get'>
+      <div>
+        <label
+        >Titel
+          <input autofocus id='title' name='title' required type='text' value='hello' />
+        </label>
+      </div>
+      <div>
+        <label
+        >Dringlichkeit
+          <input
+            id='importance'
+            max='3'
+            min='0'
+            name='importance'
+            required
+            type='number'
+            value='2'
+          />
+        </label>
+      </div>
+      <div>
+        <label
+        >Zu erledigen bis
+          <input id='dueDate' name='dueDate' required type='date' value='2022-08-08' />
+        </label>
+      </div>
+      <div>
+        <label class='checkbox'>
+          erledigt
+          <input
+            id='completed'
+            name='completed'
+            type='checkbox'
+            value='1'
+          />
+        </label>
+      </div>
+      <label
+      >Beschreibung
+        <textarea id='description' name='description'>Test</textarea>
+      </label>
+      <input id='timestamp' name='timestamp' type='hidden' />
+      <input id='_id' name='_id' type='hidden' />
+      <div>
+        <button class='create-button' id='create' name='create' type='submit'>Erstellen</button>
+      </div>
+      <div>
+        <button id='overview' type='button'>Übersicht</button>
+      </div>
+    </form>
+  </div>
 
-    <div class='js-todo-list display-bottom container'>
-        <button class="create-new-item" id="openCreate"> <ion-icon name="add-circle-outline" size="medium"></ion-icon>
-            Neues Todo erstellen
-        </button>
-        <form class='todo-filter' method="get">
-            <div class='box'>
-                <select class='filter' id="filter" name="filter">
-                    <option selected value=''>Sortieren nach ...</option>
-                    <option value='title'>Titel</option>
-                    <option value='importance'>Dringlichkeit</option>
-                    <option value='dueDate'>Erledigungsdatum</option>
-                    <option value='timestamp'>Erstellungsdatum</option>
-                </select>
-            </div>
-            <div class='box'>
-                <select class='show-by-status' id="statusFilter" name="statusFilter">
-                    <option selected value='a'>Alle Todos anzeigen</option>
-                    <option value='0'>offene Todos anzeigen</option>
-                    <option value='1'>erledigte Todos anzeigen</option>
-                </select>
-            </div>
-        </form>
-        <p/>
-        <ul></ul>
-    </div>
+  <div class='js-todo-list display-bottom container'>
+    <button class='create-new-item' id='openCreate'>
+      <ion-icon name='add-circle-outline' size='medium'></ion-icon>
+      Neues Todo erstellen
+    </button>
+    <form class='todo-filter' method='get'>
+      <div class='box'>
+        <select class='filter' id='filter' name='filter'>
+          <option selected value=''>Sortieren nach ...</option>
+          <option value='title'>Titel</option>
+          <option value='importance'>Dringlichkeit</option>
+          <option value='dueDate'>Erledigungsdatum</option>
+          <option value='timestamp'>Erstellungsdatum</option>
+        </select>
+      </div>
+      <div class='box'>
+        <select class='show-by-status' id='statusFilter' name='statusFilter'>
+          <option selected value='a'>Alle Todos anzeigen</option>
+          <option value='0'>offene Todos anzeigen</option>
+          <option value='1'>erledigte Todos anzeigen</option>
+        </select>
+      </div>
+    </form>
+    <p />
+    <ul></ul>
+  </div>
 
 </main>
 
 <footer>
-    <p class='alignCenter'>&copy; Laurent</p>
+  <p class='alignCenter'>&copy; Laurent</p>
 </footer>
 <script src='/scripts/index.js' type='module'></script>
 </body>

@@ -1,13 +1,13 @@
 class HttpService {
-    ajax(method, url, data, headers) {
-        const fetchHeaders = new Headers({'content-type': 'application/json', ...(headers || {})});
+  ajax(method, url, data, headers) {
+    const fetchHeaders = new Headers({ 'content-type': 'application/json', ...(headers || {}) });
 
-        return fetch(url, {
-            method,
-            headers: fetchHeaders,
-            body: JSON.stringify(data),
-        }).then((res) => res.json());
-    }
+    return fetch(url, {
+      method,
+      headers: fetchHeaders,
+      body: JSON.stringify(data),
+    }).then((res) => res.json());
+  }
 }
 
 export const httpService = new HttpService();
