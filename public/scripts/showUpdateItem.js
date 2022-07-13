@@ -6,7 +6,7 @@ export const showUpdateItem = (item) => {
   displayParts(selectorDisplayBottom, Display.NONE);
   displayParts(selectorDisplayTop, Display.BLOCK);
 
-  const itemToChange = item[0]
+  const itemToChange = item[0];
   const formKeys = Object.keys(itemToChange);
   formKeys.forEach((name) => {
     const formElementsName = form.elements[name];

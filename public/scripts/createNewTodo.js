@@ -10,5 +10,5 @@ export const createNewTodo = () => {
   displayParts(selectorDisplayTop, Display.BLOCK);
   titleFocus();
   form.reset();
- changeButton('Erstellen','js-create-button js-create-new-todo')
+  changeButton('Erstellen', 'js-create-button js-create-new-todo');
 };
