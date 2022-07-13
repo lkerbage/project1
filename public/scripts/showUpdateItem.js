@@ -6,15 +6,17 @@ export const showUpdateItem = (item) => {
   displayParts(selectorDisplayBottom, Display.NONE);
   displayParts(selectorDisplayTop, Display.BLOCK);
 
+
   const itemToChange = item[0];
+
   const formKeys = Object.keys(itemToChange);
+
   formKeys.forEach((name) => {
     const formElementsName = form.elements[name];
-    if (formElementsName) form.elements[name].value = itemToChange[name];
+    formElementsName.removeAttribute('checked');
+    form.elements[name].value = itemToChange[name];
     if (formElementsName.id === 'completed' && formElementsName.value == 1) {
       formElementsName.setAttribute('checked', 'checked');
-    } else {
-      formElementsName.removeAttribute('checked');
     }
   });
 };
